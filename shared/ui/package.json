@@ -1,0 +1,17 @@
+{
+  "name": "@kowalskiddamian/rapid-ui",
+  "version": "0.0.4",
+  "peerDependencies": {
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "scripts": {
+    "build:sass": "sass src/styles/styles.scss assets/styles.css"
+  },
+  "files": [
+    "dist/"
+  ]
+}
