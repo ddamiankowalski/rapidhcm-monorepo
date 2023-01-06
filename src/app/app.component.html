@@ -1,4 +1,6 @@
+<h3>Buttons section</h3>
 <div class="container">
-    <rapid-button>haha</rapid-button>
-    <rapid-button [type]="'simple'">Nie wiem</rapid-button>
+    <rapid-button [disabled]="true">I am disabled</rapid-button>
+    <rapid-button (click)="setLoading()" [isLoading]="loading">Login</rapid-button>
+    <rapid-button [type]="'simple'">Forgot password</rapid-button>
 </div>

@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'rapid-hcm';
+  loading = false;
+
+  setLoading() {
+    this.loading = true;
+    setTimeout(() => {
+      this.loading = false;
+    }, 3000); 
+  }
 }

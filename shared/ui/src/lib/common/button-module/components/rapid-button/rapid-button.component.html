@@ -3,7 +3,10 @@
 </ng-container>
 
 <ng-template #default>
-    <button [ngClass]="[ type === 'default' ? 'rapid-button' : 'rapid-button--' + type ]">
-        <ng-content></ng-content>
+    <button [disabled]="disabled" [ngClass]="[ type === 'default' ? 'rapid-button' : 'rapid-button--' + type ]">
+        <rapid-spinner *ngIf="isLoading"></rapid-spinner>
+        <span>
+            <ng-content></ng-content>
+        </span>
     </button>
 </ng-template>

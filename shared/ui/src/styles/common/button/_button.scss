@@ -22,24 +22,33 @@ button {
 
         &:hover {
             cursor: pointer;
-            transform: translateY(-.125rem);
-            
-            @include shadow.generic(hover);
+
+            &:not(:focus):not(:disabled) {
+                transform: translateY(-.125rem);
+                @include shadow.generic(hover);
+            }
         }
 
-        &:focus {
+        &:focus:not(:disabled) {
             outline: 3px solid rgba(55, 66, 255, .25);
+            animation: button-jump .3s 1, text-slide 1s 1;
         }
 
-        &:active {
+        &:active:not(:disabled) {
             background-color: var(--primary-action-deep);
+            animation: button-jump .3s 1, text-slide 1s 1;
+        }
+
+        &:disabled {
+            background-color: var(--disabled-background);
+            color: var(--disabled-deep);
         }
 
         &--simple {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: .3rem;
+            gap: .4rem;
             padding: .750rem .3rem;
             border: none;
             color: var(--primary-action);
@@ -48,6 +57,34 @@ button {
             &:hover {
                 cursor: pointer;
                 text-decoration: underline;
+            }
+
+            &:focus {
+                text-decoration: underline;
+            }
+        }
+          
+        @keyframes button-jump {
+            from {
+                transform: translateY(-.125rem);
+            }
+
+            50% {
+                transform: translateY(-.3rem);
+            }
+          
+            to {
+              transform: translateY(-.125rem);
+            }
+        }
+
+        @keyframes text-slide {
+            from {
+                transform: translateX(-16px);
+            }
+
+            to {
+                transform: translateX(0);
             }
         }
     }

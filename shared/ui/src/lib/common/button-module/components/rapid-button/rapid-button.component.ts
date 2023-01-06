@@ -6,4 +6,6 @@ import { Component, Input } from "@angular/core";
 })
 export class RapidButtonComponent {
     @Input() type: 'default' | 'simple' = 'default';
+    @Input() disabled = false;
+    @Input() isLoading = false;
 }
