@@ -4,15 +4,16 @@
 
 <ng-template #default>
     <button 
+        class="rapid-button"
         [disabled]="disabled" 
         [ngClass]="[ type === 'default' ? 'rapid-button' : 'rapid-button--' + type ]"
     >
-        <rapid-spinner *ngIf="isLoading"
-            [ngClass]="[ isLoading ? 'rapid-button__spinner--loading' : '' ]"
-        ></rapid-spinner>
         <span 
-            [ngClass]="[ isLoading ? 'rapid-button__text--slide' : 'rapid-button__text' ]"
+            [ngClass]="[ isLoading ? 'rapid-button__text--slide' : 'rapid-button__text', stoppedLoading ? 'rapid-button__text--slide-stop' : '' ]"
         >
+            <rapid-spinner 
+                [ngClass]="[ isLoading ? 'rapid-button__spinner--loading' : 'rapid-button__spinner', stoppedLoading ? 'rapid-button__spinner--loading-stop' : '' ]"
+            ></rapid-spinner>
             <ng-content></ng-content>
         </span>
     </button>

@@ -2,21 +2,39 @@
 
 button {
     background: none;
+    pointer-events: none;
 
     & .rapid-button {
         &__text {
             font-size: .750rem;
 
             &--slide {
+                transform: translateX(16px);
                 animation: text-slide 1s 1;
                 font-size: .750rem;
+            
+                &-stop {
+                    animation: text-slide-back 1s;
+                }
             }
         }
 
         &__spinner {
+            position: absolute;
+            visibility: hidden;
+            opacity: 0;
+
             &--loading {
+                left: -1.5rem;
+                position: absolute;
                 opacity: 1;
-                animation: slider-slide 1s;
+                animation: spinner-slide 1s;
+            }
+
+            &--loading-stop {
+                left: -1.5rem;
+                position: absolute;
+                animation: spinner-slide-back 1s;
             }
         }
     }
@@ -25,8 +43,8 @@ button {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: .3rem;
-        padding: .750rem 1.2rem;
+        gap: .4rem;
+        padding: .750rem 3rem;
         background-color: var(--primary-action);
         color: var(--primary-white);
         border-radius: 5px;
@@ -49,20 +67,83 @@ button {
 
         &:focus:not(:disabled) {
             outline: 3px solid rgba(55, 66, 255, .25);
-            animation: button-jump .3s 1;
         }
 
         &:active:not(:disabled) {
             background-color: var(--primary-action-deep);
-            animation: button-jump .3s 1;
         }
 
         &:disabled {
             background-color: var(--disabled-background);
             color: var(--disabled-deep);
+            cursor: auto;
+        }
+
+        &--inline-load {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: .4rem;
+            padding: .750rem 3rem;
+            background-color: var(--primary-action);
+            color: var(--primary-white);
+            border-radius: 5px;
+            border: none;
+            font-size: .750rem;
+            transition: transform .3s ease-in-out, 
+                        background-color .3s ease-in-out,
+                        outline .1s;
+
+            @include shadow.generic(normal);
+            
+            &:hover {
+                cursor: pointer;
+                
+                &:not(:focus):not(:disabled) {
+                    transform: translateY(-.125rem);
+                    @include shadow.generic(hover);
+                }
+            }
+
+            & .rapid-button {
+                &__text {
+                    font-size: .750rem;
+                    visibility: visible;
+        
+                    &--slide {
+                        transform: translateX(0);
+                        visibility: hidden;
+                        animation: text-slide-inline-load .5s 1;
+                    
+                        &-stop {
+                            animation: text-slide-inline-load-back .8s;
+                        }
+                    }
+                }
+
+                &__spinner {
+                    position: absolute;
+                    opacity: 1;
+        
+                    &--loading {
+                        left: 50%;
+                        transform: translateX(-50%);
+                        visibility: visible;
+                        opacity: 1;
+                        position: absolute;
+                        animation: spinner-inline-slide 1s;
+                    }
+        
+                    &--loading-stop {
+                        position: absolute;
+                        animation: spinner-inline-slide-back 1s;
+                    }
+                }
+            }
         }
 
         &--simple {
+            background: none;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -72,32 +153,71 @@ button {
             color: var(--primary-action);
 
             &:hover {
+                &:not(:focus):not(:disabled) {
+                    transform: translateY(0);
+                }
+
                 cursor: pointer;
                 text-decoration: underline;
             }
 
-            &:focus {
+            &:focus:not(:disabled) {
+                background: none;
                 text-decoration: underline;
-            }
-        }
-          
-        @keyframes button-jump {
-            from {
-                transform: translateY(-.125rem);
+                outline: none;
             }
 
-            50% {
-                transform: translateY(-.3rem);
+            &:active:not(:disabled) {
+                background: none;
+                outline: none;
             }
-          
+        }
+
+        @keyframes text-slide-inline-load {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
             to {
-              transform: translateY(-.125rem);
+                transform: translateY(-4px);
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+
+        @keyframes text-slide-inline-load-back {
+            from {
+                transform: translateY(-4px);
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            to {
+                transform: translateY(0);
+                visibility: visible;
+                opacity: 1;
             }
         }
 
         @keyframes text-slide {
             from {
-                transform: translateX(-16px);
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(16px);
+            }
+        }
+        
+        @keyframes text-slide-back {
+            from {
+                transform: translateX(16px);
+            }
+
+            50% {
+                transform: translateX(16px);   
             }
 
             to {
@@ -105,17 +225,57 @@ button {
             }
         }
 
-        @keyframes slider-slide {
+        @keyframes spinner-inline-slide {
             from {
                 opacity: 0;
             }
 
-            15% {
+            50% {
                 opacity: 0;
             }
 
             to {
                 opacity: 1;
+            }
+        }
+
+        @keyframes spinner-inline-slide-back {
+            from {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        @keyframes spinner-slide {
+            from {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes spinner-slide-back {
+            from {
+                visibility: visible;
+                opacity: 1;
+            }
+
+            to {
+                visibility: hidden;
+                opacity: 0;
             }
         }
     }

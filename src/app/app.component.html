@@ -1,6 +1,7 @@
 <h3>Buttons section</h3>
 <div class="container">
     <rapid-button [disabled]="true">I am disabled</rapid-button>
-    <rapid-button (click)="setLoading()" [isLoading]="loading">Login</rapid-button>
+    <rapid-button (click)="setInlineLoading()" [isLoading]="inlineLoading" [disabled]="true">Loading button</rapid-button>
+    <rapid-button (click)="setLoading()" [isLoading]="loading" [type]="'inline-load'">Inline loading</rapid-button>
     <rapid-button [type]="'simple'">Forgot password</rapid-button>
 </div>
