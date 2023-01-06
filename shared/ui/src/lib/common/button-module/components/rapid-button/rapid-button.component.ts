@@ -8,4 +8,11 @@ export class RapidButtonComponent {
     @Input() type: 'default' | 'simple' = 'default';
     @Input() disabled = false;
     @Input() isLoading = false;
+
+    isSliding = false;
+
+    slide() {
+        this.isSliding = true;
+    };
+
 }

@@ -3,6 +3,14 @@
 button {
     background: none;
 
+    & .rapid-button__text {
+        font-size: .750rem;
+
+        &--slide {
+            animation: text-slide 1s 1;
+        }
+    }
+
     &.rapid-button {
         display: flex;
         justify-content: center;
@@ -31,12 +39,12 @@ button {
 
         &:focus:not(:disabled) {
             outline: 3px solid rgba(55, 66, 255, .25);
-            animation: button-jump .3s 1, text-slide 1s 1;
+            animation: button-jump .3s 1;
         }
 
         &:active:not(:disabled) {
             background-color: var(--primary-action-deep);
-            animation: button-jump .3s 1, text-slide 1s 1;
+            animation: button-jump .3s 1;
         }
 
         &:disabled {
@@ -52,7 +60,6 @@ button {
             padding: .750rem .3rem;
             border: none;
             color: var(--primary-action);
-            font-size: .750rem;
 
             &:hover {
                 cursor: pointer;
