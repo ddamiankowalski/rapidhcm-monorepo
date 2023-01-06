@@ -5,5 +5,5 @@ import { Component, Input } from "@angular/core";
     templateUrl: './rapid-button.component.html'
 })
 export class RapidButtonComponent {
-    @Input() iconName?: string;
+    @Input() type: 'default' | 'simple' = 'default';
 }

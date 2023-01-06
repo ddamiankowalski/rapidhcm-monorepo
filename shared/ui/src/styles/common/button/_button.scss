@@ -34,5 +34,21 @@ button {
         &:active {
             background-color: var(--primary-action-deep);
         }
+
+        &--simple {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: .3rem;
+            padding: .750rem .3rem;
+            border: none;
+            color: var(--primary-action);
+            font-size: .750rem;
+
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
     }
 }

@@ -1,7 +1,9 @@
-<ng-container *ngTemplateOutlet="default"></ng-container>
+<ng-container *ngTemplateOutlet="default">
+    <ng-content></ng-content>
+</ng-container>
 
 <ng-template #default>
-    <button class="rapid-button">
+    <button [ngClass]="[ type === 'default' ? 'rapid-button' : 'rapid-button--' + type ]">
         <ng-content></ng-content>
     </button>
 </ng-template>
