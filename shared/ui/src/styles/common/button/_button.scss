@@ -3,11 +3,21 @@
 button {
     background: none;
 
-    & .rapid-button__text {
-        font-size: .750rem;
+    & .rapid-button {
+        &__text {
+            font-size: .750rem;
 
-        &--slide {
-            animation: text-slide 1s 1;
+            &--slide {
+                animation: text-slide 1s 1;
+                font-size: .750rem;
+            }
+        }
+
+        &__spinner {
+            &--loading {
+                opacity: 1;
+                animation: slider-slide 1s;
+            }
         }
     }
 
@@ -92,6 +102,20 @@ button {
 
             to {
                 transform: translateX(0);
+            }
+        }
+
+        @keyframes slider-slide {
+            from {
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
             }
         }
     }
