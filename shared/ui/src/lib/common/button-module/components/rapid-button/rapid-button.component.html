@@ -1,5 +1,7 @@
 <ng-container *ngTemplateOutlet="default"></ng-container>
 
 <ng-template #default>
-    <button class="rapid-button">Add action <span class="fa-solid fa-user"></span></button>
+    <button class="rapid-button">
+        <ng-content></ng-content>
+    </button>
 </ng-template>

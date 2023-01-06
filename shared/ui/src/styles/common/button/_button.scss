@@ -4,7 +4,11 @@ button {
     background: none;
 
     &.rapid-button {
-        padding: .750rem 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: .3rem;
+        padding: .750rem 1.2rem;
         background-color: var(--primary-action);
         color: var(--primary-white);
         border-radius: 5px;

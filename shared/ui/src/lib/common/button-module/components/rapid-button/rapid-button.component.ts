@@ -1,9 +1,9 @@
-import { Component, ViewEncapsulation } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 @Component({
     selector: 'rapid-button',
-    templateUrl: './rapid-button.component.html',
-    encapsulation: ViewEncapsulation.None
+    templateUrl: './rapid-button.component.html'
 })
 export class RapidButtonComponent {
+    @Input() iconName?: string;
 }
