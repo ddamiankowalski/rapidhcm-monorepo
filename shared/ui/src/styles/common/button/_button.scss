@@ -79,6 +79,7 @@ button {
 
         &:disabled {
             background-color: var(--disabled-background);
+            pointer-events: none;
             color: var(--disabled-deep);
             cursor: auto;
         }
@@ -152,7 +153,7 @@ button {
         }
 
         &--simple {
-            font-weight: 400;
+            font-weight: 500;
             background: none;
             display: flex;
             justify-content: center;
@@ -177,6 +178,67 @@ button {
                 background: none;
                 text-decoration: underline;
                 outline: none;
+            }
+
+            &:active:not(:disabled) {
+                background: none;
+                outline: none;
+            }
+        }
+
+        &--outline {
+            font-weight: 500;
+            background: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: .4rem;
+            padding: .750rem 1.5rem;
+            border: 1px solid var(--primary-action-deep);
+            color: var(--primary-action);
+            filter: none;
+
+            & .rapid-button__text {
+                font-size: .750rem;
+    
+                &--slide {
+                    transform: translateX(0);
+                    animation: none;
+                    font-size: .750rem;
+                
+                    &-stop {
+                        animation: none;
+                    }
+
+                    & rapid-spinner {
+                        display: none;
+                    }
+                }
+            }
+
+            &:hover {
+                &:not(:focus):not(:disabled) {
+                    transform: translateY(0);
+                    filter: none;
+                }
+
+                cursor: pointer;
+                text-decoration: underline;
+            }
+
+            & .rapid-icon {
+                transition: transform .3s ease;
+            }
+
+            &:focus:not(:disabled) {
+                background: none;
+                text-decoration: underline;
+                outline: 3px solid rgba(55, 66, 255, .25);
+
+                & .rapid-icon {
+                    transition: transform .3s ease-in-out;
+                    transform: rotate(180deg);
+                }
             }
 
             &:active:not(:disabled) {

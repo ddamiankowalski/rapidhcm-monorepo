@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges, ContentChild, ChangeDetectionStrategy } from "@angular/core";
+import { Component, Input, OnChanges, SimpleChanges, ContentChild, ChangeDetectionStrategy, HostBinding } from "@angular/core";
 import { ICON_TOKEN, RapidIconComponent } from "../../../icon-module/components/rapid-icon.component";
 
 @Component({
@@ -7,9 +7,13 @@ import { ICON_TOKEN, RapidIconComponent } from "../../../icon-module/components/
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RapidButtonComponent implements OnChanges {
+    @HostBinding('style.pointer-events') get pointerEvents(): string {
+        return this.disabled ? 'none' : 'auto';
+      }
+
     @ContentChild(ICON_TOKEN, { static: true }) rapidIcon!: RapidIconComponent;
 
-    @Input() type: 'default' | 'simple' | 'inline-load' = 'default';
+    @Input() type: 'default' | 'simple' | 'inline-load' | 'outline' = 'default';
     @Input() disabled = false;
     @Input() isLoading = false;
 

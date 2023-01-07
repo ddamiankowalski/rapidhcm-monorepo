@@ -5,13 +5,14 @@ rapid-icon {
 .rapid-button {
     .rapid-icon {
         max-width: 10px;
-        transition: max-width .3s ease-in-out;
+        transition: opacity .3s ease, max-width .3s ease-in-out;
         line-height: 10px;
         font-size: 10px;
-        margin-right: .5rem;
+        margin-right: .3rem;
+        opacity: 1;
 
         &--loading {
-            visibility: hidden;
+            margin-right: 0;
             max-width: 0;
             opacity: 0;
         }

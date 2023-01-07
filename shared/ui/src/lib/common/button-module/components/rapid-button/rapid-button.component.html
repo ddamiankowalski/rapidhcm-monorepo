@@ -8,7 +8,7 @@
         [disabled]="disabled" 
         [ngClass]="[ type === 'default' ? 'rapid-button' : 'rapid-button--' + type ]"
     >
-        <span 
+        <span
             [ngClass]="[ isLoading ? 'rapid-button__text--slide' : 'rapid-button__text', stoppedLoading ? 'rapid-button__text--slide-stop' : '' ]"
         >
             <rapid-spinner 

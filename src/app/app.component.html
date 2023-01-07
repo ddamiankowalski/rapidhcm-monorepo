@@ -2,8 +2,8 @@
 <h5>A section with buttons</h5>
 <div class="container">
     <rapid-button [disabled]="true">I am disabled</rapid-button>
-    <rapid-button (click)="setInlineLoading()" [isLoading]="inlineLoading" [disabled]="false">
-        <rapid-icon [name]="'heart-pulse'" [type]="'solid'"></rapid-icon>
+    <rapid-button (click)="setInlineLoading()" [isLoading]="inlineLoading">
+        <rapid-icon [name]="'right-to-bracket'" [type]="'solid'"></rapid-icon>
         Loading button
     </rapid-button>
     <rapid-button (click)="setLoading()" [isLoading]="loading" [type]="'inline-load'">
@@ -23,11 +23,17 @@
     </rapid-button>
 </div>
 
-<h3>Section with icons</h3>
+<h3>Section without icons</h3>
 <h5>A section of buttons that also have buttons</h5>
 <div class="container">
-    <rapid-button>
-        <rapid-icon [name]="'heart-pulse'" [type]="'solid'"></rapid-icon>
+    <rapid-button [isLoading]="true">
         Forgot password
+    </rapid-button>
+    <rapid-button 
+        [isLoading]="true"
+        [type]="'outline'"
+    >
+        <rapid-icon [name]="'angle-down'" [type]="'solid'"></rapid-icon>
+        Outline button
     </rapid-button>
 </div>
