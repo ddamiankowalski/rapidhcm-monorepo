@@ -13,7 +13,7 @@ export class RapidButtonComponent implements OnChanges {
 
     @ContentChild(ICON_TOKEN, { static: true }) rapidIcon!: RapidIconComponent;
 
-    @Input() type: 'default' | 'simple' | 'inline-load' | 'outline' = 'default';
+    @Input() type: 'default' | 'simple' | 'inline-load' | 'outline' | 'destructive' | 'success' = 'default';
     @Input() disabled = false;
     @Input() isLoading = false;
 
@@ -22,7 +22,11 @@ export class RapidButtonComponent implements OnChanges {
     ngOnChanges(changes: SimpleChanges): void {
         this.checkLoadingState(changes);
 
-        if(this.rapidIcon && changes['isLoading']?.previousValue !== undefined && this.type !== 'inline-load') {
+        if(
+            this.rapidIcon && 
+            (!changes['isLoading']?.firstChange || changes['isLoading']?.firstChange && changes['isLoading']?.currentValue === true) && 
+            this.type !== 'inline-load'
+        ) {
             this.changeIconVisibility();
         }
     }

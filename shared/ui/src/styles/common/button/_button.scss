@@ -234,11 +234,6 @@ button {
                 background: none;
                 text-decoration: underline;
                 outline: 3px solid rgba(55, 66, 255, .25);
-
-                & .rapid-icon {
-                    transition: transform .3s ease-in-out;
-                    transform: rotate(180deg);
-                }
             }
 
             &:active:not(:disabled) {

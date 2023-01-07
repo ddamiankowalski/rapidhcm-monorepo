@@ -22,5 +22,5 @@ export class RapidIconComponent implements RapidBaseIcon {
     @Input() type: 'solid' | 'regular' | 'thin' = 'regular';
     @Input() name: string | undefined;
     
-    startedLoading = false;
+    startedLoading: boolean | undefined = undefined;
 }
