@@ -1,8 +1,8 @@
 @use '../shadows/shadows' as shadow;
+@use './animations';
 
 button {
     background: none;
-    pointer-events: none;
 
     & .rapid-button {
         &__text {
@@ -40,6 +40,7 @@ button {
     }
 
     &.rapid-button {
+        font-weight: 500;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -80,6 +81,7 @@ button {
         }
 
         &--inline-load {
+            font-weight: 500;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -136,6 +138,10 @@ button {
         
                     &--loading-stop {
                         position: absolute;
+                        visibility: visible;
+                        opacity: 1;
+                        left: 50%;
+                        transform: translateX(-50%);
                         animation: spinner-inline-slide-back 1s;
                     }
                 }
@@ -143,6 +149,7 @@ button {
         }
 
         &--simple {
+            font-weight: 400;
             background: none;
             display: flex;
             justify-content: center;
@@ -170,112 +177,6 @@ button {
             &:active:not(:disabled) {
                 background: none;
                 outline: none;
-            }
-        }
-
-        @keyframes text-slide-inline-load {
-            from {
-                transform: translateX(0);
-                opacity: 1;
-                visibility: visible;
-            }
-
-            to {
-                transform: translateY(-4px);
-                visibility: hidden;
-                opacity: 0;
-            }
-        }
-
-        @keyframes text-slide-inline-load-back {
-            from {
-                transform: translateY(-4px);
-                opacity: 0;
-                visibility: hidden;
-            }
-
-            to {
-                transform: translateY(0);
-                visibility: visible;
-                opacity: 1;
-            }
-        }
-
-        @keyframes text-slide {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(16px);
-            }
-        }
-        
-        @keyframes text-slide-back {
-            from {
-                transform: translateX(16px);
-            }
-
-            50% {
-                transform: translateX(16px);   
-            }
-
-            to {
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes spinner-inline-slide {
-            from {
-                opacity: 0;
-            }
-
-            50% {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes spinner-inline-slide-back {
-            from {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-            to {
-                opacity: 0;
-            }
-        }
-
-        @keyframes spinner-slide {
-            from {
-                opacity: 0;
-            }
-
-            50% {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes spinner-slide-back {
-            from {
-                visibility: visible;
-                opacity: 1;
-            }
-
-            to {
-                visibility: hidden;
-                opacity: 0;
             }
         }
     }

@@ -12,10 +12,6 @@ export class RapidButtonComponent implements OnChanges {
     stoppedLoading = false;
 
     ngOnChanges(changes: SimpleChanges): void {
-        if(this.disabled) {
-            return;
-        }
-        
         changes['isLoading']?.previousValue ? this.stoppedLoading = true : this.stoppedLoading = false;
     }
 }
