@@ -1,8 +1,11 @@
 @use '../shadows/shadows' as shadow;
 @use './animations';
+@use './sizing' as sizing;
+
+@include sizing.full-width();
 
 button {
-    background: none;
+    @include sizing.full-width();
 
     & .rapid-button {
         &__text {
@@ -158,10 +161,12 @@ button {
             padding: .750rem .3rem;
             border: none;
             color: var(--primary-action);
+            filter: none;
 
             &:hover {
                 &:not(:focus):not(:disabled) {
                     transform: translateY(0);
+                    filter: none;
                 }
 
                 cursor: pointer;

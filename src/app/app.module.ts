@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RapidButtonsModule, SharedUiModule } from '@kowalskiddamian/rapid-ui';
+import { RapidButtonsModule, RapidIconsModule, SharedUiModule } from '@kowalskiddamian/rapid-ui';
 
 import { AppComponent } from './app.component';
 
@@ -9,7 +9,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     SharedUiModule,
-    RapidButtonsModule
+    RapidButtonsModule,
+    RapidIconsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

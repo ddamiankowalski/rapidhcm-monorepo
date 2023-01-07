@@ -1,0 +1,11 @@
+@mixin full-width {
+    .rapid-button {
+        &__full-width {
+            width: 100%;
+
+            & > button {
+                width: 100%;
+            }
+        }
+    }
+}

@@ -98,11 +98,13 @@
 
 @keyframes spinner-slide-back {
     from {
+        position: absolute;
         visibility: visible;
         opacity: 1;
     }
 
     to {
+        position: absolute;
         visibility: hidden;
         opacity: 0;
     }

@@ -1,7 +1,33 @@
 <h3>Buttons section</h3>
+<h5>A section with buttons</h5>
 <div class="container">
     <rapid-button [disabled]="true">I am disabled</rapid-button>
-    <rapid-button (click)="setInlineLoading()" [isLoading]="inlineLoading" [disabled]="false">Loading button</rapid-button>
-    <rapid-button (click)="setLoading()" [isLoading]="loading" [type]="'inline-load'">Inline loading</rapid-button>
+    <rapid-button (click)="setInlineLoading()" [isLoading]="inlineLoading" [disabled]="false">
+        <rapid-icon [name]="'heart-pulse'" [type]="'solid'"></rapid-icon>
+        Loading button
+    </rapid-button>
+    <rapid-button (click)="setLoading()" [isLoading]="loading" [type]="'inline-load'">
+        <rapid-icon [name]="'circle-plus'" [type]="'solid'"></rapid-icon>
+        Inline loading
+    </rapid-button>
     <rapid-button [type]="'simple'">Forgot password</rapid-button>
+</div>
+
+
+
+<h3>Full width section</h3>
+<h5>A section with buttons that spans accross full-width</h5>
+<div class="container">
+    <rapid-button class="rapid-button__full-width">
+        Forgot password
+    </rapid-button>
+</div>
+
+<h3>Section with icons</h3>
+<h5>A section of buttons that also have buttons</h5>
+<div class="container">
+    <rapid-button>
+        <rapid-icon [name]="'heart-pulse'" [type]="'solid'"></rapid-icon>
+        Forgot password
+    </rapid-button>
 </div>

@@ -22,6 +22,11 @@
             "glob": "*",
             "input": "./shared/ui/assets/fonts",
             "output": "/assets/fonts/"
+          },
+          {
+            "glob": "*",
+            "input": "./shared/ui/assets/webfonts",
+            "output": "/assets/webfonts/"
           }
         ],
         "styles": [

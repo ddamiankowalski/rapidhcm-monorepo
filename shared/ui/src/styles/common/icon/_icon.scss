@@ -1,0 +1,19 @@
+rapid-icon {
+    line-height: 10px;
+}
+
+.rapid-button {
+    .rapid-icon {
+        max-width: 10px;
+        transition: max-width .3s ease-in-out;
+        line-height: 10px;
+        font-size: 10px;
+        margin-right: .5rem;
+
+        &--loading {
+            visibility: hidden;
+            max-width: 0;
+            opacity: 0;
+        }
+    }
+}

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RapidButtonComponent } from './components/rapid-button/rapid-button.component';
-import { RapidUtilsModule } from '../utils/utils.module';
+import { RapidUtilsModule } from '../utils-module/utils.module';
 
 @NgModule({
   declarations: [
