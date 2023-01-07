@@ -118,7 +118,7 @@ button {
                         animation: text-slide-inline-load .5s 1;
                     
                         &-stop {
-                            animation: text-slide-inline-load-back .8s;
+                            animation: text-slide-inline-load-back 1s;
                         }
                     }
                 }
@@ -138,11 +138,11 @@ button {
         
                     &--loading-stop {
                         position: absolute;
-                        visibility: visible;
+                        visibility: hidden;
                         opacity: 1;
                         left: 50%;
                         transform: translateX(-50%);
-                        animation: spinner-inline-slide-back 1s;
+                        animation: spinner-inline-slide-back .3s;
                     }
                 }
             }
