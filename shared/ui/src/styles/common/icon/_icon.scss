@@ -4,15 +4,24 @@ rapid-icon {
 
 .rapid-button {
     .rapid-icon {
+        font-size: 10px;
+        margin-right: .3rem;
+        margin-left: .3rem;
+    }
+}
+
+.rapid-button:not(.rapid-button--inline-load) {
+    .rapid-icon {
         max-width: 10px;
-        transition: opacity .3s ease, max-width .3s ease-in-out;
+        transition: opacity .3s ease, max-width .3s ease-in-out, margin .3s ease;
         line-height: 10px;
         font-size: 10px;
         margin-right: .3rem;
+        margin-left: .3rem;
         opacity: 1;
 
         &--loading {
-            margin-right: 0;
+            margin: 0;
             max-width: 0;
             opacity: 0;
         }

@@ -6,7 +6,7 @@
     <button 
         class="rapid-button"
         [disabled]="disabled" 
-        [ngClass]="[ type === 'default' ? 'rapid-button' : 'rapid-button--' + type ]"
+        [ngClass]="[ type === 'default' ? 'rapid-button' : 'rapid-button--' + type, loadingType === 'default' ? '' : 'rapid-button--' + loadingType ]"
     >
         <span
             [ngClass]="[ isLoading ? 'rapid-button__text--slide' : 'rapid-button__text', stoppedLoading ? 'rapid-button__text--slide-stop' : '' ]"

@@ -3,14 +3,14 @@
 <div class="container">
     <rapid-button [disabled]="true">I am disabled</rapid-button>
     <rapid-button (click)="setInlineLoading()" [isLoading]="inlineLoading">
-        <rapid-icon [name]="'right-to-bracket'" [type]="'solid'"></rapid-icon>
         Loading button
+        <rapid-icon [name]="'right-to-bracket'" [type]="'solid'"></rapid-icon>
     </rapid-button>
-    <rapid-button (click)="setLoading()" [isLoading]="loading" [type]="'inline-load'">
+    <rapid-button (click)="setLoading()" [isLoading]="loading" [loadingType]="'inline-load'">
         <rapid-icon [name]="'circle-plus'" [type]="'solid'"></rapid-icon>
         Inline loading
     </rapid-button>
-    <rapid-button [type]="'simple'">Forgot password</rapid-button>
+    <rapid-button [type]="'simple'" [isLoading]="loadingAll">Simple button</rapid-button>
 </div>
 
 
@@ -18,29 +18,55 @@
 <h3>Full width section</h3>
 <h5>A section with buttons that spans accross full-width</h5>
 <div class="container">
-    <rapid-button class="rapid-button__full-width">
+    <rapid-button
+        [isLoading]="loadingAll"
+        [loadingType]="'inline-load'" 
+        class="rapid-button__full-width"
+    >
         Forgot password
+    </rapid-button>
+    <rapid-button [type]="'destructive'" [isLoading]="loadingAll" class="rapid-button__full-width">
+        Delete me
     </rapid-button>
 </div>
 
-<h3>Section without icons</h3>
-<h5>A section of buttons that also have buttons</h5>
+<h3>Default, outline, destructive and success buttons</h3>
+<h5>A section of buttons that are of different types</h5>
 <div class="container">
-    <rapid-button [isLoading]="true">
+    <rapid-button [isLoading]="loadingAll">
         Forgot password
     </rapid-button>
     <rapid-button 
-        [isLoading]="true"
+        [isLoading]="loadingAll"
         [type]="'outline'"
+        [disabled]="true"
+    ><rapid-icon [name]="'inbox'" [type]="'regular'"></rapid-icon>Outline disabled</rapid-button>
+    <rapid-button 
+        [isLoading]="loadingAll"
+        [type]="'outline'"
+    ><rapid-icon [name]="'inbox'" [type]="'regular'"></rapid-icon>Outline</rapid-button>
+    <rapid-button 
+        [isLoading]="loadingAll"
+        [type]="'destructive'"
     >
         <rapid-icon [name]="'inbox'" [type]="'regular'"></rapid-icon>
-        Outline button
+        Delete somehting
     </rapid-button>
     <rapid-button 
-        [isLoading]="true"
-        [type]="'default'"
+        [type]="'success'"
+        [isLoading]="loadingAll"
+        [loadingType]="'inline-load'"
     >
-        <rapid-icon [name]="'inbox'" [type]="'regular'"></rapid-icon>
-        Outline button
+        Success loading
+    </rapid-button>
+        <rapid-button 
+        [type]="'success'"
+        [loadingType]="'inline-load'"
+    >
+        <rapid-icon [name]="'check'" [type]="'regular'"></rapid-icon>
+        Success
     </rapid-button>
 </div>
+
+<h3></h3>
+<h5>A section of buttons that are of different types</h5>

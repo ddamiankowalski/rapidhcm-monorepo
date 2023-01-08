@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges, ContentChild, ChangeDetectionStrategy, HostBinding } from "@angular/core";
 import { ICON_TOKEN, RapidIconComponent } from "../../../icon-module/components/rapid-icon.component";
+import { RapidButtonLoadingType, RapidButtonType } from "../../../interfaces/button.interface";
 
 @Component({
     selector: 'rapid-button',
@@ -13,26 +14,30 @@ export class RapidButtonComponent implements OnChanges {
 
     @ContentChild(ICON_TOKEN, { static: true }) rapidIcon!: RapidIconComponent;
 
-    @Input() type: 'default' | 'simple' | 'inline-load' | 'outline' | 'destructive' | 'success' = 'default';
-    @Input() disabled = false;
+    @Input() type: RapidButtonType = 'default';
+    @Input() loadingType: RapidButtonLoadingType = 'default';
     @Input() isLoading = false;
+    @Input() disabled = false;
 
     stoppedLoading = false;
 
     ngOnChanges(changes: SimpleChanges): void {
         this.checkLoadingState(changes);
 
-        if(
-            this.rapidIcon && 
-            (!changes['isLoading']?.firstChange || changes['isLoading']?.firstChange && changes['isLoading']?.currentValue === true) && 
-            this.type !== 'inline-load'
-        ) {
+        if(this.whenToChangeVisibility(changes)) {
             this.changeIconVisibility();
         }
     }
 
     checkLoadingState(changes: SimpleChanges): void {
         changes['isLoading']?.previousValue ? this.stoppedLoading = true : this.stoppedLoading = false;
+    }
+
+    whenToChangeVisibility(changes: SimpleChanges): boolean {
+        return this.rapidIcon && 
+        (!changes['isLoading']?.firstChange || changes['isLoading']?.firstChange && changes['isLoading']?.currentValue === true) && 
+        this.loadingType !== 'inline-load' &&
+        this.type !== 'outline'
     }
 
     changeIconVisibility(): void {

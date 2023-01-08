@@ -184,19 +184,6 @@ button {
                 background: none;
                 outline: none;
             }
-        }
-
-        &--outline {
-            font-weight: 500;
-            background: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: .4rem;
-            padding: .750rem 1.5rem;
-            border: 1px solid var(--primary-action-deep);
-            color: var(--primary-action);
-            filter: none;
 
             & .rapid-button__text {
                 font-size: .750rem;
@@ -214,6 +201,45 @@ button {
                         display: none;
                     }
                 }
+            }
+        }
+
+        &--outline {
+            font-weight: 500;
+            background: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: .4rem;
+            padding: .750rem 1.5rem;
+            border: 1px solid var(--primary-action-deep);
+            color: var(--primary-action);
+            filter: none;
+            transition: background-color .2s ease-in-out,
+                        outline .1s ease-in-out;
+
+            & .rapid-button__text {
+                font-size: .750rem;
+    
+                &--slide {
+                    transform: translateX(0);
+                    animation: none;
+                    font-size: .750rem;
+                
+                    &-stop {
+                        animation: none;
+                    }
+
+                    & rapid-spinner {
+                        display: none;
+                    }
+                }
+            }
+
+            &:disabled {
+                background: none;
+                color: var(--disabled-deep);
+                border-color: var(--disabled-deep);
             }
 
             &:hover {
@@ -237,8 +263,61 @@ button {
             }
 
             &:active:not(:disabled) {
-                background: none;
-                outline: none;
+                background-color: var(--outline-clicked);
+            }
+        }
+
+        &--destructive {
+            font-weight: 500;
+            background-color: var(--destructive);
+
+            &:hover {
+                &:not(:focus):not(:disabled) {
+                    transform: translateY(-.125rem);
+
+                    @include shadow.generic(hover);
+                }
+
+                cursor: pointer;
+            }
+
+            & .rapid-icon {
+                transition: transform .3s ease;
+            }
+
+            &:focus:not(:disabled) {
+                outline: 3px solid rgba($color: #FF4757, $alpha: .25);
+            }
+
+            &:active:not(:disabled) {
+                background-color: var(--destructive-deep);
+            }
+        }
+
+        &--success {
+            font-weight: 500;
+            background-color: var(--success);
+
+            &:hover {
+                &:not(:focus):not(:disabled) {
+                    transform: translateY(-.125rem);
+
+                    @include shadow.generic(hover);
+                }
+
+                cursor: pointer;
+            }
+
+            & .rapid-icon {
+                transition: transform .3s ease;
+            }
+
+            &:focus:not(:disabled) {
+                outline: 3px solid rgba($color: #2ED573, $alpha: .25);
+            }
+
+            &:active:not(:disabled) {
+                background-color: var(--success-deep);
             }
         }
     }
