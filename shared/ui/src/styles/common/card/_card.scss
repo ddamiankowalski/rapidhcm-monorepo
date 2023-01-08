@@ -1,0 +1,96 @@
+@use '../shadows/shadows' as shadow;
+
+.rapid-card {
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    min-width: fit-content;
+    width: 5rem;
+    transition: box-shadow .5s ease;
+    padding: 1rem 1.5rem;
+
+    @include shadow.generic(cardnormal);
+
+    &:hover {
+        @include shadow.generic(cardhover);
+    }
+
+    & rapid-card-header {
+        width: 100%;
+
+        & .rapid-card__header {
+            display: flex;
+            justify-content: space-between;
+            gap: 1.5rem;
+
+            & rapid-cardheader-icon {
+                height: 100%;
+                aspect-ratio: 1 / 1;
+            }
+
+            &__icon {
+                &-item {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    aspect-ratio : 1 / 1;
+                    height: 100%;
+                    border: 1px solid var(--border-grey);
+                    border-radius: 8px;
+                }
+
+                &--container {
+                    display: flex;
+                    flex: 1;
+                    align-items: center;
+                    gap: .825rem;
+                }
+            }
+
+            &__title {
+                &--container {
+                    min-width: 0;
+                }
+
+                font-size: .825rem;
+                font-weight: 600;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            &__subtitle {
+                display: flex;
+                gap: .3rem;
+                font-size: .725rem;
+                font-weight: 400;
+                white-space: nowrap;
+
+                &--handler {
+                    color: var(--disabled-background);
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            &__fav {
+                display: flex;
+                gap: .725rem;
+                justify-content: space-between;
+                align-items: center;
+                min-width: 2rem;
+                height: 100%;
+                color: var(--disabled-background);
+
+                &--item {
+                    transition: color .3s ease-in-out;
+
+                    &:hover {
+                        color: var(--disabled-deep);
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

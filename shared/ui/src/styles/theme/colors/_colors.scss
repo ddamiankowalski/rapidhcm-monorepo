@@ -9,4 +9,11 @@
     --success: #2ED573;
     --success-deep: #27AD5F;
     --outline-clicked: #F1F2F6;
+    --light-background-color: #FFFFFF;
+    --card-border: #DFE4EA;
+    --border-grey: #A4B0BE;
+}
+
+body {
+    background-color: var(--light-background-color);
 }
