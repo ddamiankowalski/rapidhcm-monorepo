@@ -70,9 +70,33 @@
 
 <h3>Cards</h3>
 <h5>A section of cards</h5>
-<rapid-card>
-    <rapid-card-header
-        [title]="'See Top 10 Managers in RapidHCM'"
-    >
-    </rapid-card-header>
-</rapid-card>
+<div class="container">
+    <rapid-card>
+        <rapid-card-header
+            [title]="'See Top 10 Managers in RapidHCM'"
+        >
+        </rapid-card-header>
+        <rapid-button [isLoading]="loadingAll" class="rapid-button__full-width">Loading</rapid-button>
+    </rapid-card>
+    <rapid-card>
+        <rapid-card-header
+            [title]="'Whatever is this message this is cool and very long haha'"
+        >
+        </rapid-card-header>
+        <rapid-button [isLoading]="loadingAll" class="rapid-button__full-width">Loading</rapid-button>
+    </rapid-card>
+    <rapid-card>
+        <rapid-card-header
+            [title]="'Short'"
+        >
+        </rapid-card-header>
+        <rapid-button [isLoading]="loadingAll" class="rapid-button__full-width">Loading</rapid-button>
+    </rapid-card>
+    <rapid-card>
+        <rapid-card-header
+            [title]="'Short'"
+        >
+        </rapid-card-header>
+        <rapid-button [isLoading]="loadingAll" class="rapid-button__full-width">Loading</rapid-button>
+    </rapid-card>
+</div>

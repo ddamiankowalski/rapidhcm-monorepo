@@ -9,18 +9,25 @@
     margin: 0;
     font-family: 'IBMPlexSans';
     font-style: normal;
+    box-sizing: border-box;
 }
 
 body {
     display: flex;
     justify-content: center;
-    margin-top: 10rem;
+    margin-bottom: 5rem;
 }
 
 .container {
+    width: 50rem;
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    flex-wrap: wrap;
+    
+    & rapid-card {
+        flex: 1;
+    }
 }
 
 h3 {
