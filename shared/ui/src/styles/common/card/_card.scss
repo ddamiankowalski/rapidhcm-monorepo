@@ -1,5 +1,9 @@
 @use '../shadows/shadows' as shadow;
 
+rapid-card {
+    min-width: 10rem;
+}
+
 .rapid-card {
     display: flex;
     flex-direction: column;
@@ -8,6 +12,7 @@
     border-radius: 10px;
     transition: box-shadow .5s ease;
     padding: 1rem 1.5rem;
+    min-width: 0;
 
     @include shadow.generic(cardnormal);
 
