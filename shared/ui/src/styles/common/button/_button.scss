@@ -1,6 +1,7 @@
 @use '../shadows/shadows' as shadow;
 @use './animations';
 @use './sizing' as sizing;
+@use './buttonicon';
 
 @include sizing.full-width();
 
@@ -8,6 +9,8 @@ button {
     @include sizing.full-width();
 
     & .rapid-button {
+        max-height: 2.4375rem;
+
         &__text {
             font-size: .750rem;
 

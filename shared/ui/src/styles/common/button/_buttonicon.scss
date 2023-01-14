@@ -1,0 +1,46 @@
+@use '../shadows/shadows' as shadow;
+
+.rapid-icon-button {
+    button {
+        background: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2.4735rem;
+        height: 2.4735rem;
+        font-size: .725rem;
+        border: 1px solid var(--primary-action);
+        border-radius: 5px;
+        color: var(--primary-action);
+        transition: color .3s ease-in-out,
+                    background-color .1s ease-in-out,
+                    transform .3s ease-in,
+                    outline .1s;
+    
+        &:hover {
+            background-color: var(--primary-action);
+            color: var(--primary-white);
+            cursor: pointer;
+    
+            &:not(:focus):not(:disabled) {
+                @include shadow.generic(hover);
+                transform: translateY(-.125rem);
+            }
+        }
+
+        &:focus:not(:disabled) {
+            outline: 3px solid rgba(55, 66, 255, .25);
+        }
+
+        &:active:not(:disabled) {
+            background-color: var(--primary-action-deep);
+        }
+    
+        &:disabled {
+            border-color: var(--disabled-deep);
+            color: var(--disabled-deep);
+            pointer-events: none;
+            cursor: auto;
+        }
+    }
+}

@@ -1,0 +1,7 @@
+@use './weight' as weight;
+@use './size' as size;
+
+.rapid-text {
+    @include weight.types();
+    @include size.types();
+}

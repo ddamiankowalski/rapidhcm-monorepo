@@ -1,0 +1,23 @@
+@mixin types() {
+    &__size {
+        &--x-small {
+            font-size: .725rem;
+        }
+
+        &--small {
+            font-size: .825rem;
+        }
+
+        &--medium {
+            font-size: .9rem;
+        }
+    
+        &--large {
+            font-size: 1rem;
+        }
+    
+        &--x-large {
+            font-size: 1.125rem;
+        }
+    }
+}

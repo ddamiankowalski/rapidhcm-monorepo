@@ -1,4 +1,6 @@
 @use '../shadows/shadows' as shadow;
+@use './cardfooter';
+@use './cardimage';
 
 rapid-card {
     min-width: 10rem;
@@ -6,6 +8,7 @@ rapid-card {
 
 .rapid-card {
     display: flex;
+    position: relative;
     flex-direction: column;
     gap: 1rem;
     border: 1px solid var(--card-border);
@@ -20,7 +23,7 @@ rapid-card {
         @include shadow.generic(cardhover);
     }
 
-    & rapid-card-header {
+    & rapid-card-header rapid-card-header-news {
         width: 100%;
 
         & .rapid-card__header {

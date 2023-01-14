@@ -1,3 +1,8 @@
 @forward './button/button';
 @forward './icon/icon';
 @forward './card/card';
+@forward './typography/typography';
+
+a {
+    all: unset;
+}

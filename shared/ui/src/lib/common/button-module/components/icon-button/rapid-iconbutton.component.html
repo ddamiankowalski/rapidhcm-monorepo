@@ -1,0 +1,9 @@
+<ng-container *ngTemplateOutlet="default"></ng-container>
+
+<ng-template #default>
+    <div class="rapid-icon-button">
+        <button [disabled]="disabled">
+            <ng-content></ng-content>
+        </button>
+    </div>
+</ng-template>
