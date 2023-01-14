@@ -3,7 +3,7 @@
 @use './cardimage';
 
 rapid-card {
-    min-width: 10rem;
+    min-width: min-content;
 }
 
 .rapid-card {
