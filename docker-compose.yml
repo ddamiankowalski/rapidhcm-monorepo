@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15.1-alpine
+    restart: on-failure
+    environment:
+      POSTGRES_DB: rapidhcm
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: t4jn3h4slo
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - ./db-data:/var/lib/postgresql/data:rw
+    ports:
+     - "5432:5432"
+
+  php:
+    build:
+      context: .
+    image: sf-docker/php:dev
+    restart: on-failure
+    environment:
+      APP_ENV: dev
+      APP_DEBUG: 1
+      PHP_DATE_TIMEZONE: ${PHP_DATE_TIMEZONE:-UTC}
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app:rw,cached
+
+  nginx: 
+    build:
+      context: .
+      image: sf-docker/nginx:dev
+      restart: on-failure
+      depends_on:
+        - php
+      ports:
+        - "8080:80"
+
