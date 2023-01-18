@@ -1,37 +1,42 @@
-import { DataTypes, Model, Sequelize } from "sequelize";
+import {
+    DataTypes,
+    InferAttributes,
+    InferCreationAttributes,
+    Model,
+    ModelAttributes,
+    ModelOptions,
+    Sequelize
+} from 'sequelize';
 
-class User extends Model {
-    declare id: string;
-    declare firstName: string;
-}
+export class User extends Model<
+    InferAttributes<User>,
+    InferCreationAttributes<User>
+> {
+    private static modelConfig: ModelAttributes = {
+        id: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            primaryKey: true,
+            allowNull: false,
+        },
+        username: {
+            type: DataTypes.STRING,
+        },
+        password: {
+            type: DataTypes.STRING,
+        },
+        firstName: {
+            type: DataTypes.STRING
+        },
+    };
 
-const syncAllModels = async (sequelize: Sequelize) => {
-    try {
-        User.init({
-            id: {
-                type: DataTypes.UUID,
-                defaultValue: DataTypes.UUIDV4,
-                primaryKey: true,
-                allowNull: false
-            },
-            username: {
-                type: DataTypes.STRING
-            },
-            password: {
-                type: DataTypes.STRING
-            }
-        }, {
-            sequelize: sequelize,
-            modelName: 'User',
-            tableName: 'users'
-        });
-        await User.sync({ force: true });
+    private static dbConfig: ModelOptions = {
+        modelName: 'User',
+        tableName: 'users',
+    };
 
-        const user = await User.create({ username: 'Huh', password: 'Test' });
-        await user.save();
-    } catch(error) {
-        console.error('Unable to create a model');
+    public static initModel(sequelize: Sequelize): typeof User {
+        User.init(this.modelConfig, { sequelize, ...this.dbConfig });
+        return User;
     }
 }
-
-export { syncAllModels };

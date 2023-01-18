@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 import authRouter from './src/routes/auth/auth';
 
-import { initializeSequelizeConnection } from './src/database/dbsequelize';
+import { initDBandModels } from './src/database/dbsequelize';
 
 dotenv.config();
 
@@ -24,6 +24,6 @@ app.get('/api/users', (req: Request, res: Response) => {
 
 app.use('/auth', authRouter);
 
-initializeSequelizeConnection()
+initDBandModels()
 
 export default app;
