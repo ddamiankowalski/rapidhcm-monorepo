@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import express, { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import { User } from '../../database/models';
-
+import daysjs from 'dayjs';
 
 const authRouter = express.Router();
 
@@ -20,6 +20,13 @@ authRouter.post('/login', async (req: Request, res: Response) => {
         res.status(403).send('Unauthorized');
     } else {
         const accessToken = jwt.sign({ username }, process.env.TOKEN_SECRET, { expiresIn: '10s' });
+        const refreshToken = jwt.sign({ username }, process.env.TOKEN_SECRET_REFRESH, { expiresIn: '1d' });
+
+        res.cookie('rapidRefreshToken', JSON.stringify(refreshToken), {
+            httpOnly: true,
+            expires: daysjs().add(1, 'day').toDate()
+        })
+
         res.status(200).send({ accessToken });
     }
 })
