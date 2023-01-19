@@ -1,19 +1,40 @@
 import jwt from 'jsonwebtoken';
 import express, { Request, Response } from 'express';
+import bcrypt from 'bcrypt';
+import { User } from '../../database/models';
+
 
 const authRouter = express.Router();
 
-authRouter.post('/login', (req: Request, res: Response) => {
-    const { login, password } = req.body;
+authRouter.post('/login', async (req: Request, res: Response) => {
+    const { username, password } = req.body;
     
     if(!process.env.TOKEN_SECRET || !process.env.TOKEN_SECRET_REFRESH){
         throw new Error('JWT_SECRETS must be defined in order for server to start up');
     }
 
-    const accessToken = jwt.sign({ id: 1 }, process.env.TOKEN_SECRET, { expiresIn: 86400 });
-    const refreshToken = jwt.sign({ id: 1 }, process.env.TOKEN_SECRET_REFRESH, { expiresIn: 525600 });
+    const user = await User.findOne({ where: { username } });
+    const result = await user?.validatePassword(password);
+    
+    if(!result) {
+        res.status(403).send('Unauthorized');
+    } else {
+        const accessToken = jwt.sign({ username }, process.env.TOKEN_SECRET, { expiresIn: '10s' });
+        res.status(200).send({ accessToken });
+    }
+})
 
-    res.send({ accessToken, refreshToken });
+authRouter.post('/register', async (req: Request, res: Response) => {
+    const { username, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    try {
+        await User.create({ username, password: hashedPassword });
+        res.send({ username, password, hashedPassword });
+    } catch(error) {
+        console.error('Something went wrong when adding a new user', error);
+        res.send('essa');
+    }
 })
 
 export default authRouter;

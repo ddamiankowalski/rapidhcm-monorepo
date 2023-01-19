@@ -8,6 +8,8 @@ import {
     Sequelize
 } from 'sequelize';
 
+import bcrypt from 'bcrypt';
+
 export class User extends Model<
     InferAttributes<User>,
     InferCreationAttributes<User>
@@ -21,12 +23,14 @@ export class User extends Model<
         },
         username: {
             type: DataTypes.STRING,
+            unique: true
         },
         password: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(60, true),
         },
-        firstName: {
-            type: DataTypes.STRING
+        email: {
+            type: DataTypes.STRING,
+            unique: true
         },
     };
 
@@ -35,8 +39,16 @@ export class User extends Model<
         tableName: 'users',
     };
 
+    declare password: string;
+    declare username: string;
+    declare email?: string;
+
     public static initModel(sequelize: Sequelize): typeof User {
         User.init(this.modelConfig, { sequelize, ...this.dbConfig });
         return User;
+    }
+
+    public async validatePassword(password: string): Promise<boolean> {
+        return await bcrypt.compare(password, this.password);
     }
 }
