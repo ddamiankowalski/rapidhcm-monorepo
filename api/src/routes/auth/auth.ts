@@ -8,10 +8,6 @@ const authRouter = express.Router();
 
 authRouter.post('/login', async (req: Request, res: Response) => {
     const { username, password } = req.body;
-    
-    if(!process.env.TOKEN_SECRET || !process.env.TOKEN_SECRET_REFRESH){
-        throw new Error('JWT_SECRETS must be defined in order for server to start up');
-    }
 
     const user = await User.findOne({ where: { username } });
     const result = await user?.validatePassword(password);
@@ -19,8 +15,8 @@ authRouter.post('/login', async (req: Request, res: Response) => {
     if(!result) {
         res.status(403).send('Unauthorized');
     } else {
-        const accessToken = jwt.sign({ username }, process.env.TOKEN_SECRET, { expiresIn: '10s' });
-        const refreshToken = jwt.sign({ username }, process.env.TOKEN_SECRET_REFRESH, { expiresIn: '1d' });
+        const accessToken = jwt.sign({ username }, process.env.TOKEN_SECRET ?? '', { expiresIn: '10s' });
+        const refreshToken = jwt.sign({ username }, process.env.TOKEN_SECRET_REFRESH ?? '', { expiresIn: '1d' });
 
         res.cookie('rapidRefreshToken', JSON.stringify(refreshToken), {
             httpOnly: true,
