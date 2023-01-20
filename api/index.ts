@@ -6,7 +6,7 @@ import passport from 'passport';
 import cookieParser from 'cookie-parser';
 
 import { initDBandModels } from './src/database/dbsequelize';
-import { authenticateJwt, jwtStrategyFactory, jwtStrategyOpts } from './src/middlewares/passport/passport';
+import { jwtStrategyFactory, jwtStrategyOpts } from './src/middlewares/passport/passport';
 
 const app: Express = express();
 const port = process.env.PORT || 8000;
@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(cookieParser());
 
-app.get('/protected', authenticateJwt, (req, res) => {
+app.get('/protected', passport.authenticate('jwt', { session: false }), (req, res) => {
   res.json('req.user');
 })
 
