@@ -1,8 +1,9 @@
 import jwt, { JwtPayload } from 'jsonwebtoken';
-import express, { Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import { User } from '../../database/models';
 import daysjs from 'dayjs';
+import { verifyRefreshToken } from '../../controllers/auth/auth.controller';
 
 const authRouter = express.Router();
 
@@ -40,20 +41,26 @@ authRouter.post('/register', async (req: Request, res: Response) => {
     }
 })
 
-authRouter.post('/refresh', async (req: Request, res: Response) => {
-    const { rapidRefreshToken } = req.cookies;
-    const { exp, username } = jwt.verify(JSON.parse(rapidRefreshToken), process.env.TOKEN_SECRET_REFRESH ?? '') as JwtPayload;
-
-    if(exp !== undefined) {
-        const expiryDate = new Date(exp).getTime();
-        const nowDate = new Date().getTime();
-
-        if(nowDate < expiryDate) {
-            res.status(401).send({ message: 'Refresh token expired' });
-        }
-
-        const accessToken = jwt.sign({ username }, process.env.TOKEN_SECRET ?? '', { expiresIn: '10s' });
-        res.status(200).send({ accessToken });
+authRouter.post('/refresh', (req: Request, res: Response) => {
+    try {
+        const { rapidRefreshToken } = req.cookies;
+        const { exp, username } = verifyRefreshToken(rapidRefreshToken) as JwtPayload;
+    
+        if(!exp || !username) {
+            res.status(401).send({ message: 'Could not verify refresh token' });
+        } else {
+            const expiryDate = new Date(exp).getTime();
+            const nowDate = new Date().getTime();
+    
+            if(nowDate < expiryDate) {
+                res.status(401).send({ message: 'Refresh token expired' });
+            }
+    
+            const accessToken = jwt.sign({ username }, process.env.TOKEN_SECRET ?? '', { expiresIn: '10s' });
+            res.status(200).send({ accessToken });        
+        }   
+    } catch(err) {
+        res.status(500).send({ message: 'Refreshing the token went wrong' })
     }
 })
 
