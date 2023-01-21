@@ -54,7 +54,7 @@ authRouter.post('/register', async (req: Request, res: Response) => {
 });
 
 authRouter.post('/refresh', (req: Request, res: Response) => {
-    const { rapidRefreshToken } = AuthController.getCookiesFromRequest(req);
+    const { rapidRefreshToken } = AuthController.getTokenFromRequestCookie(req);
     const { exp, username } = AuthController.verifyRefreshToken(rapidRefreshToken) as RapidJwtPayload
 
     if(new Date().getTime() < new Date(exp).getTime()) {

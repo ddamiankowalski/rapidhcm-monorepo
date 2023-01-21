@@ -14,7 +14,7 @@ const verifyRefreshToken = (refreshToken: string): RapidJwtPayload => {
     }
 }
 
-const getCookiesFromRequest = (req: Request) => {    
+const getTokenFromRequestCookie = (req: Request) => {    
     if(!req.cookies.rapidRefreshToken) {
         throw new RapidNullCookiesError('No cookies found in the request');
     }
@@ -25,4 +25,4 @@ const signAccessToken = (username: string): string => {
     return jwt.sign({ username }, process.env.TOKEN_SECRET ?? '', { expiresIn: ACCESS_TOKEN_EXPIRE_VALUE + 's' });
 }
 
-export { verifyRefreshToken, getCookiesFromRequest, signAccessToken };
+export { verifyRefreshToken, getTokenFromRequestCookie, signAccessToken };
