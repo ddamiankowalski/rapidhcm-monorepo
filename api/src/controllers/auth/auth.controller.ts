@@ -1,5 +1,6 @@
-import { Request } from "express";
+import { NextFunction, Request } from "express";
 import jwt from "jsonwebtoken";
+import bcrypt, { hash } from 'bcrypt';
 import RapidNullCookiesError from "../../errors/auth/nullcookies.error";
 import RapidRefreshTokenError from "../../errors/auth/refreshtoken.error";
 import { RapidJwtPayload } from "../interfaces/auth.interfaces";
@@ -25,4 +26,22 @@ const signAccessToken = (username: string): string => {
     return jwt.sign({ username }, process.env.TOKEN_SECRET ?? '', { expiresIn: ACCESS_TOKEN_EXPIRE_VALUE + 's' });
 }
 
-export { verifyRefreshToken, getTokenFromRequestCookie, signAccessToken };
+const hashPassword = async (password: string, next: NextFunction): Promise<string | undefined> => {
+    try {
+        return await bcrypt.hash(password, 10);
+    } catch(err) {
+        next(err);
+    }
+} 
+
+const registerUser = () => {
+
+}
+
+export { 
+    verifyRefreshToken, 
+    getTokenFromRequestCookie, 
+    signAccessToken, 
+    hashPassword,
+    registerUser
+ };

@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import express, { Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import { User } from '../../database/models';
 import daysjs from 'dayjs';
@@ -38,12 +38,13 @@ authRouter.post('/login', async (req: Request, res: Response) => {
     }
 });
 
-authRouter.post('/register', async (req: Request, res: Response) => {
+authRouter.post('/register', async (req: Request, res: Response, next: NextFunction) => {
     const { username, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await AuthController.hashPassword(password, next);
 
+    
     try {
-        await User.create({ username, password: hashedPassword });
+        await User.create({ username, password: hashedPassword ?? 's' });
         res.send({ username, password, hashedPassword });
     } catch (error) {
         console.error('Something went wrong when adding a new user', error);
