@@ -1,0 +1,30 @@
+.rapid-flex {
+    display: flex;
+
+    &--column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &--justify {
+        justify-content: center;
+    }
+
+    &--align {
+        align-items: center;
+    }
+
+    &--align-self {
+        align-self: center;
+    }
+
+    &-gap {
+        &--x-small {
+            gap: .5rem
+        }
+
+        &--small {
+            gap: .725rem;
+        }
+    }
+}

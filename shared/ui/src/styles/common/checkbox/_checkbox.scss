@@ -2,8 +2,8 @@
 
 .rapid-checkbox {
     input[type=checkbox] {
-        width: 1rem;
-        height: 1rem;
+        width: .9rem;
+        height: .9rem;
         vertical-align: middle;
         border: 1px solid var(--border-grey-deep);
         appearance: none;
@@ -14,7 +14,7 @@
     }
 
     display: flex;
-    font-size: .675rem;
+    font-size: .625rem;
     
     &__label {
         user-select: none;
@@ -27,6 +27,7 @@
     }
 
     &__label-text {
+        font-size: .626rem;
         margin-left: .5rem;
     }
 
@@ -34,7 +35,7 @@
         position: relative;
 
         input[type=checkbox]:checked {
-            @include shadow.generic(shadow);
+            @include shadow.generic(checkbox);
             border: none;
             background: var(--primary-action);
     

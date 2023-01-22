@@ -7,6 +7,12 @@ rapid-card {
 }
 
 .rapid-card {
+    &__login {
+        & > .rapid-card {
+            border-radius: 10px 0 0 10px;
+        }
+    }
+
     display: flex;
     position: relative;
     flex-direction: column;
@@ -16,6 +22,7 @@ rapid-card {
     transition: box-shadow .5s ease;
     padding: 1rem 1.5rem;
     min-width: 0;
+    background-color: var(--primary-white);
 
     @include shadow.generic(cardnormal);
 
