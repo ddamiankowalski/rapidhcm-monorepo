@@ -14,7 +14,7 @@ const verifyRefreshToken = (refreshToken: string): RapidJwtPayload => {
     try {
         return jwt.verify(JSON.parse(refreshToken), process.env.TOKEN_SECRET_REFRESH ?? '') as RapidJwtPayload;
     } catch(err) {
-        throw new RapidRefreshTokenError('Veryfying the refresh token went wrong');
+        throw new RapidRefreshTokenError('Veryfying the refresh token unsuccessful');
     }
 }
 

@@ -2,7 +2,6 @@ import express, { Request, Response } from 'express';
 
 import * as AuthController from '../../controllers/auth/auth.controller';
 import { RapidJwtPayload } from '../../controllers/interfaces/auth.interfaces';
-import RapidRefreshExpiredError from '../../errors/auth/refreshexpired.error';
 import { runAsyncWrapper } from '../utils/asyncwrapper';
 import { User } from '../../database/models';
 import RapidUserNotFoundError from '../../errors/auth/usernotfound.error';
@@ -51,13 +50,9 @@ authRouter.post(
 
 authRouter.post('/refresh', (req: Request, res: Response) => {
     const { rapidRefreshToken } = AuthController.getTokenFromRequestCookie(req);
-    const { exp, username } = AuthController.verifyRefreshToken(
+    const { username } = AuthController.verifyRefreshToken(
         rapidRefreshToken
     ) as RapidJwtPayload;
-
-    if (new Date().getTime() < new Date(exp).getTime()) {
-        throw new RapidRefreshExpiredError('Refresh token has expired');
-    }
 
     const accessToken = AuthController.signAccessToken(username);
     res.status(200).send({ accessToken });
