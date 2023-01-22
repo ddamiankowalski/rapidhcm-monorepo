@@ -12,9 +12,11 @@ button {
         max-height: 2.4375rem;
 
         &__text {
+            white-space: nowrap;
             font-size: .750rem;
 
             &--slide {
+                white-space: nowrap;
                 transform: translateX(16px);
                 animation: text-slide 1s 1;
                 font-size: .750rem;
@@ -116,6 +118,7 @@ button {
 
             & .rapid-button {
                 &__text {
+                    white-space: nowrap;
                     font-size: .750rem;
                     visibility: visible;
         

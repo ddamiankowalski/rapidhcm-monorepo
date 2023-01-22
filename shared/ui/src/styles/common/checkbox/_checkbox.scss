@@ -1,0 +1,59 @@
+@use '../shadows/shadows' as shadow;
+
+.rapid-checkbox {
+    input[type=checkbox] {
+        width: 1rem;
+        height: 1rem;
+        vertical-align: middle;
+        border: 1px solid var(--border-grey-deep);
+        appearance: none;
+        border-radius: 25%;
+        outline: none;
+        cursor: pointer;
+        transition: box-shadow .1s ease-in-out;
+    }
+
+    display: flex;
+    font-size: .675rem;
+    
+    &__label {
+        user-select: none;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__label-text {
+        margin-left: .5rem;
+    }
+
+    &__input-wrapper {
+        position: relative;
+
+        input[type=checkbox]:checked {
+            @include shadow.generic(shadow);
+            border: none;
+            background: var(--primary-action);
+    
+            ~ .rapid-checkbox__input-wrapper__icon {
+                visibility: visible;
+                color: var(--primary-white);
+            }
+        }
+
+        input[type=checkbox]:focus {
+            outline: 2px solid rgba(55, 66, 255, .25);
+        }
+
+        &__icon {
+            position: absolute;
+            visibility: hidden;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
