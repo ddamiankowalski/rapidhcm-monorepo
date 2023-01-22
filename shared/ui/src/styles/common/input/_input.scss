@@ -7,9 +7,9 @@
         position: absolute;
         top: 0;
         transform: translateY(-50%);
-        left: calc(1rem - .25rem);
-        font-size: .65rem;
-        padding: 0 .25rem;
+        left: calc(1rem - .3rem);
+        font-size: .725rem;
+        padding: 0 .3rem;
         background-color: var(--primary-white);
     }
 
@@ -18,7 +18,7 @@
         box-sizing: border-box;
         border: 1px solid var(--disabled-deep);
         border-radius: .5rem;
-        min-height: 2.25rem;
+        min-height: 2.5rem;
         width: 100%;
         padding: 0 1rem;
         font-size: .7rem;
