@@ -1,11 +1,14 @@
-import { NextFunction, Request } from "express";
+import daysjs from 'dayjs';
 import jwt from "jsonwebtoken";
-import bcrypt, { hash } from 'bcrypt';
+import bcrypt from 'bcrypt';
+
+import { Request, Response } from "express";
 import RapidNullCookiesError from "../../errors/auth/nullcookies.error";
 import RapidRefreshTokenError from "../../errors/auth/refreshtoken.error";
 import { RapidJwtPayload } from "../interfaces/auth.interfaces";
 
 const ACCESS_TOKEN_EXPIRE_VALUE = 10;
+const REFRESH_TOKEN_EXPIRE_VALUE = 30;
 
 const verifyRefreshToken = (refreshToken: string): RapidJwtPayload => {
     try {
@@ -26,22 +29,26 @@ const signAccessToken = (username: string): string => {
     return jwt.sign({ username }, process.env.TOKEN_SECRET ?? '', { expiresIn: ACCESS_TOKEN_EXPIRE_VALUE + 's' });
 }
 
-const hashPassword = async (password: string, next: NextFunction): Promise<string | undefined> => {
-    try {
-        return await bcrypt.hash(password, 10);
-    } catch(err) {
-        next(err);
-    }
+const signRefreshToken = (username: string): string => {
+    return jwt.sign({ username }, process.env.TOKEN_SECRET_REFRESH ?? '', { expiresIn: REFRESH_TOKEN_EXPIRE_VALUE + 's' });
+}
+
+const hashPassword = (password: string): Promise<string> => {
+    return bcrypt.hash(password, 10);
 } 
 
-const registerUser = () => {
-
+const setHttpOnlyCookie = (res: Response, refreshToken: string): void => {
+    res.cookie('rapidRefreshToken', JSON.stringify(refreshToken), {
+        httpOnly: true,
+        expires: daysjs().add(1, 'day').toDate(),
+    })
 }
 
 export { 
     verifyRefreshToken, 
     getTokenFromRequestCookie, 
-    signAccessToken, 
+    signAccessToken,
+    signRefreshToken, 
     hashPassword,
-    registerUser
+    setHttpOnlyCookie
  };

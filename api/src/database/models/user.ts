@@ -23,7 +23,8 @@ export class User extends Model<
         },
         username: {
             type: DataTypes.STRING,
-            unique: true
+            unique: true,
+            allowNull: false
         },
         password: {
             type: DataTypes.STRING(60, true),
