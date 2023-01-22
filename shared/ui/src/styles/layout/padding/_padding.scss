@@ -28,8 +28,8 @@
         }
 
         &--xx-large {
-            padding-top: 2rem;
-            padding-bottom: 2rem;
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
         }
     }
 
@@ -55,8 +55,13 @@
         }
 
         &--x-large {
-            padding-left: 1.25rem;
-            padding-right: 1.25rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        &--xx-large {
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
         }
     }
 }

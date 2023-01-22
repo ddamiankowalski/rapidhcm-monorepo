@@ -13,6 +13,18 @@ rapid-card {
         }
     }
 
+    &__third-party {
+        position: absolute;
+        top: 0;
+        right: -4rem;
+        width: 4rem;
+        height: 100%;
+        border-radius: 0 10px 10px 0;
+        background-color: var(--border-grey-deep);
+
+        @include shadow.generic(cardnormal);
+    }
+
     display: flex;
     position: relative;
     flex-direction: column;
@@ -28,6 +40,10 @@ rapid-card {
 
     &:hover {
         @include shadow.generic(cardhover);
+
+        & + .rapid-card__third-party {
+            @include shadow.generic(cardhover);
+        }
     }
 
     & rapid-card-header rapid-card-header-news {
