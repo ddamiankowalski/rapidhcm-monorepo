@@ -16,13 +16,43 @@ rapid-card {
     &__third-party {
         position: absolute;
         top: 0;
-        right: -4rem;
-        width: 4rem;
+        right: -4.5rem;
+        width: 4.5rem;
         height: 100%;
         border-radius: 0 10px 10px 0;
         background-color: var(--border-grey-deep);
 
         @include shadow.generic(cardnormal);
+
+        &__service {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--disabled-background);
+            aspect-ratio: 1 / 1;
+            width: 100%;
+            transition: color .3s ease-in-out;
+
+            &:first-of-type:hover {
+                border-radius: 0 10px 0 0;
+            }
+
+            &:hover {
+                cursor: pointer;
+                background-color: var(--dark-hover-overlay);
+                color: var(--primary-white);
+            
+                &::before {
+                    position: absolute;
+                    left: 0;
+                    content: '';
+                    width: .3rem;
+                    height: 100%;
+                    background-color: var(--primary-action-mat);
+                }
+            }
+        }
     }
 
     display: flex;

@@ -1,14 +1,17 @@
 import { NgModule } from "@angular/core";
-import { RapidButtonsModule, RapidCardsModule, RapidCheckboxModule, RapidInputModule } from "@kowalskiddamian/rapid-ui";
+import { CommonModule } from '@angular/common';
+import { RapidButtonsModule, RapidCardsModule, RapidCheckboxModule, RapidIconsModule, RapidInputModule } from "@kowalskiddamian/rapid-ui";
 import { AuthComponent } from "./components/auth-component/auth.component";
 import { ThirdPartyAuthComponent } from "./components/third-party-auth-component/third-party-auth.component";
 
 @NgModule({
     imports: [
+        CommonModule,
         RapidCardsModule,
         RapidInputModule,
         RapidCheckboxModule,
-        RapidButtonsModule
+        RapidButtonsModule,
+        RapidIconsModule
     ],
     declarations: [
         AuthComponent,

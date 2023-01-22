@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, InjectionToken, ChangeDetectorRef } from "@angular/core";
-import { RapidBaseIcon } from "../../interfaces/icon.interface";
+import { RapidBaseIcon, RapidBaseIconTypes } from "../../interfaces/icon.interface";
 
 export const ICON_TOKEN = new InjectionToken<RapidBaseIcon>('RapidIconComponent');
 
@@ -19,7 +19,7 @@ export class RapidIconComponent implements RapidBaseIcon {
         public cdRef: ChangeDetectorRef
     ) {}
 
-    @Input() type: 'solid' | 'regular' | 'thin' = 'regular';
+    @Input() type: RapidBaseIconTypes = 'regular';
     @Input() name: string | undefined;
     
     startedLoading: boolean | undefined = undefined;

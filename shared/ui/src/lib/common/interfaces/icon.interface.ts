@@ -1,5 +1,7 @@
 export interface RapidBaseIcon {
-    type: 'solid' | 'regular' | 'thin';
+    type: RapidBaseIconTypes;
     name: string | undefined;
     startedLoading: boolean | undefined;
 }
+
+export type RapidBaseIconTypes =  'solid' | 'regular' | 'thin' | 'brands';
