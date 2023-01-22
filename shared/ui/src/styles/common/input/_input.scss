@@ -1,3 +1,5 @@
+@use '../shadows/shadows' as shadow;
+
 .rapid-input {
     position: relative;
     width: 100%;
@@ -30,6 +32,7 @@
 
         &:focus {
             border: 1px solid var(--border-grey-deep);
+            border-color: var(--primary-action-mat);
         }
 
         &:active {
@@ -51,6 +54,18 @@
 
         &:focus::placeholder {
             color: transparent;
+        }
+
+        &:disabled {
+            user-select: none;
+            pointer-events: none;
+            background-color: var(--disabled-background);
+            color: var(--disabled-deep);
+            border: 1px solid var(--border-grey);
+
+            & ~ label {
+                display: none;
+            }
         }
     }
 }

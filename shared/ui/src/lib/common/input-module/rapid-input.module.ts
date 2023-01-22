@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RapidInputComponent } from './components/rapid-input/rapid-input.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -8,6 +9,8 @@ import { RapidInputComponent } from './components/rapid-input/rapid-input.compon
     exports: [
         RapidInputComponent
     ],
-    imports: []
+    imports: [
+        FormsModule
+    ]
 })
 export class RapidInputModule {}
