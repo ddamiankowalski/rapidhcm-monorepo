@@ -11,6 +11,16 @@
         outline: none;
         cursor: pointer;
         transition: box-shadow .1s ease-in-out;
+    
+        &[disabled] {
+            cursor: none;
+            pointer-events: none;
+            border-color: var(--disabled-deep);
+            
+            ~ .rapid-checkbox__input-wrapper__icon {
+                color: var(--disabled-deep);
+            }
+        }
     }
 
     display: flex;
@@ -42,6 +52,15 @@
             ~ .rapid-checkbox__input-wrapper__icon {
                 visibility: visible;
                 color: var(--primary-white);
+            }
+
+            &[disabled] {
+                pointer-events: none;
+                background-color: var(--disabled-background);
+                
+                ~ .rapid-checkbox__input-wrapper__icon {
+                    color: var(--disabled-deep);
+                }
             }
         }
 

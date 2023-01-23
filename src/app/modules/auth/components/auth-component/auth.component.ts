@@ -12,11 +12,9 @@ export class AuthComponent implements OnInit {
 
     ngOnInit(): void {
         this.loginForm = this.fb.group({
-            login: new FormControl({ value: '', disabled: true }),
+            login: new FormControl(),
             password: new FormControl(),
             rememberUser: new FormControl()
         });
-
-        console.log(this.loginForm)
     }
 }

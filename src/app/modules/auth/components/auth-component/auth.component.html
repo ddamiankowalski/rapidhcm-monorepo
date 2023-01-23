@@ -7,13 +7,14 @@
                 <div class="rapid-margin__top--xx-large">
                     <rapid-input formControlName="login" class="rapid-margin__top--xx-large" [label]="'Username'" [placeholder]="'Enter your username'"></rapid-input>
                     <rapid-input formControlName="password" class="rapid-margin__top--x-large" [type]="'password'" [label]="'Password'" [placeholder]="'Enter your password'"></rapid-input>
-                    <rapid-checkbox class="rapid-margin__top--x-large" [label]="'Remember me?'"></rapid-checkbox>
+                    <rapid-checkbox formControlName="rememberUser" class="rapid-margin__top--x-large" [label]="'Remember me?'"></rapid-checkbox>
                 </div>
                 <rapid-button [disabled]="!loginForm.touched" class="rapid-button__full-width rapid-margin__vertical--x-large">Login</rapid-button>
                 <div class="rapid-margin__top--x-large rapid-flex--column rapid-text__size--x-small rapid-flex-gap--small">
                     <span class="rapid-flex--align-self">Forgot your password? <a href="#">Remind me</a></span>
                     <span class="rapid-flex--align-self">Not yet have an account? <a href="#">Sign Up</a></span>
                 </div>
+                <!-- {{ loginForm.value | json }} -->
             </form>
         </section>
     </rapid-card>

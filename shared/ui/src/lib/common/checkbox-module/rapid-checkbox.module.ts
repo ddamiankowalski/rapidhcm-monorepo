@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { RapidIconsModule } from "../icon-module/rapid-icons.module";
 import { RapidCheckboxComponent } from "./components/rapid-checkbox/rapid-checkbox.component";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -12,7 +13,8 @@ import { RapidCheckboxComponent } from "./components/rapid-checkbox/rapid-checkb
     ],
     imports: [
         RapidIconsModule,
-        CommonModule
+        CommonModule,
+        FormsModule
     ]
 })
 export class RapidCheckboxModule {}

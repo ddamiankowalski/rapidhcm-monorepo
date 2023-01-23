@@ -3,7 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 @Component({
     selector: 'rapid-input',
     templateUrl: './rapid-input.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.Default,
     providers: [{
         provide: NG_VALUE_ACCESSOR,
         useExisting: RapidInputComponent,
@@ -20,6 +20,15 @@ export class RapidInputComponent implements ControlValueAccessor {
 
     public onChange!: ((value: string) => void);
     public onTouched!: ((value: FocusEvent) => void);
+
+    public onValueChange(value: string) {
+        this.inputValue = value;
+        this.onChange(value);
+    }
+
+    public clearValue() {
+        this.onValueChange('');
+    }
 
     writeValue(value: string): void {
         this.inputValue = value;
