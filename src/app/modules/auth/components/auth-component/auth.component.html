@@ -2,19 +2,19 @@
     <rapid-card class="rapid-card__login">
         <section class="rapid-padding__vertical--xx-large rapid-padding__horizontal--xx-large">
             <form [formGroup]="loginForm">
-                <span class="rapid-text__size--x-large rapid-text__weight--bold">Login</span>
-                <p class="rapid-text__size--medium rapid-margin__top--medium">By typing your username and password</p>
+                <span class="rapid-text__size--x-large rapid-text__weight--bold">Welcome back</span>
+                <p class="rapid-text__size--medium rapid-margin__top--medium">Type in your username and password</p>
                 <div class="rapid-margin__top--xx-large">
-                    <rapid-input formControlName="login" class="rapid-margin__top--xx-large" [label]="'Username'" [placeholder]="'Enter your username'"></rapid-input>
+                    <rapid-input formControlName="login" [control]="loginForm.controls['login']" class="rapid-margin__top--xx-large" [label]="'Username'" [placeholder]="'Enter your username'"></rapid-input>
                     <rapid-input formControlName="password" class="rapid-margin__top--x-large" [type]="'password'" [label]="'Password'" [placeholder]="'Enter your password'"></rapid-input>
                     <rapid-checkbox formControlName="rememberUser" class="rapid-margin__top--x-large" [label]="'Remember me?'"></rapid-checkbox>
                 </div>
-                <rapid-button [disabled]="!loginForm.touched" class="rapid-button__full-width rapid-margin__vertical--x-large">Login</rapid-button>
+                <rapid-button [disabled]="!loginForm.valid" class="rapid-button__full-width rapid-margin__vertical--x-large">Login</rapid-button>
                 <div class="rapid-margin__top--x-large rapid-flex--column rapid-text__size--x-small rapid-flex-gap--small">
                     <span class="rapid-flex--align-self">Forgot your password? <a href="#">Remind me</a></span>
                     <span class="rapid-flex--align-self">Not yet have an account? <a href="#">Sign Up</a></span>
                 </div>
-                <!-- {{ loginForm.value | json }} -->
+                {{ loginForm.controls['login'].status | json }}
             </form>
         </section>
     </rapid-card>

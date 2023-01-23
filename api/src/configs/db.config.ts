@@ -2,8 +2,8 @@ import { Dialect } from "sequelize";
 
 export const dbConfig: RapidDBConfig = {
     TABLE_NAME: 'rapidhcm',
-    USER_NAME: 'root',
-    PASSWORD: 't4jn3h4slo',
+    USER_NAME: 'sammy',
+    PASSWORD: 'password',
     HOST: 'localhost',
     DIALECT: 'mysql'
 }

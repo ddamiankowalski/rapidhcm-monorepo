@@ -1,0 +1,12 @@
+<div 
+*ngIf="control?.touched || inputValue?.length"
+@inputIcon  
+class="rapid-input__clear-icon" 
+[ngClass]="{ 
+    'rapid-input__clear-icon--warn': !control?.valid && control?.touched,
+    'rapid-input__clear-icon--success': control?.valid && control?.touched,
+    'rapid-input__clear-icon--close' : inputValue?.length
+}"
+>
+<rapid-icon [type]="'regular'" [name]="'x'" (click)="iconClick()"></rapid-icon>    
+</div>

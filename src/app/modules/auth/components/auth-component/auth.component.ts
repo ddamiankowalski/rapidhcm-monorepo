@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, FormControl } from "@angular/forms";
+import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
     selector: 'rapid-auth',
@@ -12,9 +12,9 @@ export class AuthComponent implements OnInit {
 
     ngOnInit(): void {
         this.loginForm = this.fb.group({
-            login: new FormControl(),
-            password: new FormControl(),
-            rememberUser: new FormControl()
+            login: new FormControl('', [ Validators.required, Validators.minLength(5) ]),
+            password: new FormControl('', [ Validators.required ]),
+            rememberUser: new FormControl(false)
         });
     }
 }

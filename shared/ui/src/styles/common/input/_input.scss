@@ -9,12 +9,20 @@
         transform: translateY(-50%);
         right: 1rem;
         font-size: .725rem;
-        color: var(--disabled-background);
+        color: var(--disabled-deep);
         transition: .3s color ease;
+
+        &--warn {
+            color: var(--destructive);
+        }
+
+        &--success {
+            color: var(--success);
+        }
 
         &:hover {
             cursor: pointer;
-            color: var(--disabled-deep);
+            color: var(--border-grey-deep);
         }
     }
 
