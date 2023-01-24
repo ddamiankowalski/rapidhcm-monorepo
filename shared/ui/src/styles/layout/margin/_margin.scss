@@ -32,8 +32,8 @@
 
         &--xx-large {
             display: block;
-            margin-top: 2.25rem;
-            margin-bottom: 2.25rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
         }
     }
 
@@ -56,22 +56,28 @@
             margin-right: 1rem;
         }
 
-        &--large {
+        &--x-medium {
             display: block;
             margin-left: 1.5rem;
             margin-right: 1.5rem;
         }
 
+        &--large {
+            display: block;
+            margin-left: 1.75rem;
+            margin-right: 1.75rem;
+        }
+
         &--x-large {
             display: block;
-            margin-left: 2rem;
-            margin-right: 2rem;
+            margin-left: 2.25rem;
+            margin-right: 2.25rem;
         }
 
         &--xx-large {
             display: block;
-            margin-left: 2.25rem;
-            margin-right: 2.25rem;
+            margin-left: 3rem;
+            margin-right: 3rem;
         }
     }
 
@@ -89,6 +95,11 @@
         &--medium {
             display: block;
             margin-top: 1rem;
+        }
+
+        &--x-medium {
+            display: block;
+            margin-top: 1.5rem;
         }
 
         &--large {
