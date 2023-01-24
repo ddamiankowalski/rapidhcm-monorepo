@@ -1,4 +1,4 @@
-import { Component, Input, Output, ChangeDetectionStrategy, Inject, OnInit, EventEmitter } from "@angular/core";
+import { Component, Input, Output, ChangeDetectionStrategy, Inject, EventEmitter } from "@angular/core";
 import { AbstractControl } from "@angular/forms";
 import { RapidInputIconsConfig, rapidInputIconsConfig, RAPID_INPUT_ICONS_CONFIG } from "../../configs/icon.config";
 import { animate, style, transition, trigger } from '@angular/animations';
@@ -25,7 +25,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
         ])
     ]
 })
-export class RapidInputIconComponent implements OnInit {
+export class RapidInputIconComponent {
     constructor(@Inject(RAPID_INPUT_ICONS_CONFIG) public rapidIconsConfig: RapidInputIconsConfig) {
         this.rapidIconsConfig['success'] = '';
     }
@@ -37,10 +37,6 @@ export class RapidInputIconComponent implements OnInit {
     @Input() iconType?: string;
 
     public iconToggleValue = false;
-
-    ngOnInit(): void {
-        console.log(this.rapidIconsConfig, this.control);
-    }
 
     public iconClick(): void {
         this.iconToggleValue = !this.iconToggleValue;

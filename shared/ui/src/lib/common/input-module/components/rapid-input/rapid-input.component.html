@@ -2,4 +2,5 @@
     <input [disabled]="disabled" [ngModel]="inputValue" (ngModelChange)="onValueChange($event)" (blur)="onTouched($event)" [type]="inputType" [placeholder]="placeholder" />
     <label class="rapid-input__label">{{ label }}</label>
     <rapid-input-icon (iconToggle)="iconToggle($event)" *ngIf="!hideIcon" [control]="control" [inputValue]="inputValue" [iconType]="iconType"></rapid-input-icon>
+    <rapid-input-message *ngIf="!hideMessage" [control]="control"></rapid-input-message>
 </div>

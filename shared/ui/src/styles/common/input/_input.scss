@@ -3,6 +3,18 @@
     width: 100%;
     box-sizing: border-box;
 
+    &__message {
+        position: absolute;
+        font-size: .725rem;
+        bottom: -1rem;
+        left: 1rem;
+        white-space: nowrap;
+
+        &--warn {
+            color: var(--destructive);
+        }
+    }
+
     &__clear-icon {
         position: absolute;
         top: 50%;
@@ -64,7 +76,7 @@
         min-height: 2.65rem;
         width: 100%;
         padding: 0 1rem;
-        font-size: .725rem;
+        font-size: .8rem;
         transition: border .1s ease;
 
         &:hover {

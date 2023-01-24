@@ -15,6 +15,7 @@ export class RapidInputComponent implements ControlValueAccessor {
     @Input() label?: string;
     @Input() control?: AbstractControl;
     @Input() hideIcon = false;
+    @Input() hideMessage = false;
 
     @Input() set type(value: 'password' | 'text') {
         if(value === 'password') {
