@@ -1,12 +1,23 @@
 <div 
-*ngIf="control?.touched || inputValue?.length"
+*ngIf="control?.touched || inputValue?.length || iconType === 'password'"
 @inputIcon  
 class="rapid-input__clear-icon" 
 [ngClass]="{ 
-    'rapid-input__clear-icon--warn': !control?.valid && control?.touched,
-    'rapid-input__clear-icon--success': control?.valid && control?.touched,
-    'rapid-input__clear-icon--close' : inputValue?.length
+    'rapid-input__clear-icon--warn': !control?.valid && control?.touched && iconType !== 'password',
+    'rapid-input__clear-icon--password' : iconType === 'password'
 }"
 >
-<rapid-icon [type]="'regular'" [name]="'x'" (click)="iconClick()"></rapid-icon>    
+    <ng-container 
+        [ngTemplateOutlet]="iconType === 'password' ? showPasswordIcon : defaultIcon"
+        [ngTemplateOutletContext]="{ $implicit: rapidIconsConfig }"
+    ></ng-container>
 </div>
+
+<ng-template #defaultIcon let-iconsConfig>
+    <rapid-icon *ngIf="!control?.valid && control?.touched" [type]="'regular'" [name]="iconsConfig.warn.iconName" (click)="iconClick()"></rapid-icon>
+</ng-template>
+
+<ng-template #showPasswordIcon>
+    <rapid-icon [type]="'regular'" [name]="iconToggleValue ? 'eye' : 'eye-slash'" (click)="iconClick()"></rapid-icon>  
+</ng-template>
+

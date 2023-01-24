@@ -12,17 +12,36 @@
         color: var(--disabled-deep);
         transition: .3s color ease;
 
+        &--password {
+            &:hover {
+                cursor: pointer;
+                color: var(--border-grey-deep);
+            }
+        }
+
         &--warn {
             color: var(--destructive);
+
+            &:hover {
+                color: var(--destructive);
+                cursor: unset;
+            }
         }
 
         &--success {
             color: var(--success);
+
+            &:hover {
+                cursor: unset;
+                color: var(--success);
+            }
         }
 
-        &:hover {
-            cursor: pointer;
-            color: var(--border-grey-deep);
+        &--close {
+            &:hover {
+                cursor: pointer;
+                color: var(--border-grey-deep);
+            }
         }
     }
 
@@ -32,6 +51,7 @@
         transform: translateY(-50%);
         left: calc(1rem - .3rem);
         font-size: .725rem;
+        font-weight: 500;
         padding: 0 .3rem;
         background-color: var(--primary-white);
     }
@@ -86,6 +106,24 @@
 
             & ~ label {
                 opacity: 0;
+            }
+        }
+    }
+
+    &--warn {
+        & input {
+            border-color: var(--destructive);
+
+            &:hover {
+                border-color: var(--destructive-deep);
+            }
+
+            &:active {
+                border-color: var(--destructive-deep);
+            }
+
+            &:focus {
+                border-color: var(--destructive-deep);
             }
         }
     }

@@ -1,5 +1,5 @@
-<div class="rapid-input">
-    <input [disabled]="disabled" [ngModel]="inputValue" (ngModelChange)="onValueChange($event)" (blur)="onTouched($event)" [type]="type" [placeholder]="placeholder" />
+<div class="rapid-input" [ngClass]="{ 'rapid-input--warn': !control?.valid && control?.touched }">
+    <input [disabled]="disabled" [ngModel]="inputValue" (ngModelChange)="onValueChange($event)" (blur)="onTouched($event)" [type]="inputType" [placeholder]="placeholder" />
     <label class="rapid-input__label">{{ label }}</label>
-    <rapid-input-icon></rapid-input-icon>
+    <rapid-input-icon (iconToggle)="iconToggle($event)" *ngIf="!hideIcon" [control]="control" [inputValue]="inputValue" [iconType]="iconType"></rapid-input-icon>
 </div>

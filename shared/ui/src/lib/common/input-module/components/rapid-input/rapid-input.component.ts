@@ -1,4 +1,3 @@
-import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, AbstractControl } from '@angular/forms';
 @Component({
@@ -10,26 +9,26 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, AbstractControl } from '@angul
         useExisting: RapidInputComponent,
         multi: true
     }],
-    animations: [
-        trigger('inputIcon', [
-            transition(':enter', [
-                style({ opacity: 0 }),
-                animate('100ms', style({ opacity: 1 })),
-            ]),
-            transition(':leave', [
-                animate('100ms', style({ opacity: 0 })),
-            ])
-        ])
-    ]
 })
 export class RapidInputComponent implements ControlValueAccessor {
     @Input() placeholder?: string;
     @Input() label?: string;
-    @Input() type: string | 'text' = 'text';
     @Input() control?: AbstractControl;
+    @Input() hideIcon = false;
+
+    @Input() set type(value: 'password' | 'text') {
+        if(value === 'password') {
+            this.iconType = value;
+            this.inputType = value;
+        }
+
+        this.inputType = value;
+    }
     
     public disabled = false;
     public inputValue?: string;
+    public inputType?: 'password' | 'text';
+    public iconType?: 'password';
 
     public onChange!: ((value: string) => void);
     public onTouched!: ((value: FocusEvent) => void);
@@ -43,8 +42,8 @@ export class RapidInputComponent implements ControlValueAccessor {
         this.onValueChange('');
     }
 
-    public iconClick(): void {
-        console.log('click');
+    public iconToggle(value: boolean) {
+        this.inputType = value ? 'text' : 'password';
     }
 
     writeValue(value: string): void {

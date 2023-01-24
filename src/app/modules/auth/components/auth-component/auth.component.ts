@@ -12,7 +12,7 @@ export class AuthComponent implements OnInit {
 
     ngOnInit(): void {
         this.loginForm = this.fb.group({
-            login: new FormControl('', [ Validators.required, Validators.minLength(5) ]),
+            login: new FormControl('', [ Validators.required ]),
             password: new FormControl('', [ Validators.required ]),
             rememberUser: new FormControl(false)
         });
