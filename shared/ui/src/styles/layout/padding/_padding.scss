@@ -3,65 +3,75 @@
 
     &__vertical {
         &--x-small {
-            padding-top: 0.25rem;
-            padding-bottom: 0.25rem;
-        }
-
-        &--small {
             padding-top: 0.5rem;
             padding-bottom: 0.5rem;
         }
 
-        &--medium {
+        &--small {
             padding-top: 0.75rem;
-            padding-bottom: 0.75rem;          
+            padding-bottom: 0.75rem;
+        }
+
+        &--medium {
+            padding-top: 1rem;
+            padding-bottom: 1rem;          
+        }
+
+        &--x-medium {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;          
         }
 
         &--large {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
+            padding-top: 1.75rem;
+            padding-bottom: 1.75rem;
         }
 
         &--x-large {
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
+            padding-top: 2.25rem;
+            padding-bottom: 2.25rem;
         }
 
         &--xx-large {
-            padding-top: 2.5rem;
-            padding-bottom: 2.5rem;
+            padding-top: 3rem;
+            padding-bottom: 3rem;
         }
     }
 
     &__horizontal {
         &--x-small {
-            padding-left: 0.25rem;
-            padding-right: 0.25rem;
-        }
-
-        &--small {
             padding-left: 0.5rem;
             padding-right: 0.5rem;
         }
 
-        &--medium {
+        &--small {
             padding-left: 0.75rem;
             padding-right: 0.75rem;
         }
 
-        &--large {
+        &--medium {
             padding-left: 1rem;
             padding-right: 1rem;
         }
 
-        &--x-large {
+        &--x-medium {
             padding-left: 1.5rem;
             padding-right: 1.5rem;
         }
 
+        &--large {
+            padding-left: 1.75rem;
+            padding-right: 1.75rem;
+        }
+
+        &--x-large {
+            padding-left: 2.25rem;
+            padding-right: 2.25rem;
+        }
+
         &--xx-large {
-            padding-left: 2.5rem;
-            padding-right: 2.5rem;
+            padding-left: 3rem;
+            padding-right: 3rem;
         }
     }
 }
