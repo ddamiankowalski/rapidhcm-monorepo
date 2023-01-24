@@ -1,3 +1,3 @@
 <div *ngIf="control?.touched" class="rapid-input__message">
-    <span @inputMessage *ngIf="control?.errors" class="rapid-input__message--warn">{{ control?.errors | json }}</span>
+    <span @inputMessage *ngIf="control?.errors" class="rapid-input__message--warn">{{ control!.errors | errormessage | translate }}</span>
 </div>

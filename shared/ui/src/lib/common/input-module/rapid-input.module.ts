@@ -6,12 +6,15 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RapidInputIconComponent } from './components/rapid-input-icon/rapid-input-icon.component';
 import { RapidInputMessageComponent } from './components/rapid-input-message/rapid-input-message.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { RapidErrorMessagePipe } from './pipes/error-message.pipe';
 
 @NgModule({
     declarations: [
         RapidInputComponent,
         RapidInputIconComponent,
-        RapidInputMessageComponent
+        RapidInputMessageComponent,
+        RapidErrorMessagePipe
     ],
     exports: [
         RapidInputComponent
@@ -20,7 +23,8 @@ import { RapidInputMessageComponent } from './components/rapid-input-message/rap
         CommonModule,
         BrowserAnimationsModule,
         FormsModule,
-        RapidIconsModule
+        RapidIconsModule,
+        TranslateModule
     ]
 })
 export class RapidInputModule {}

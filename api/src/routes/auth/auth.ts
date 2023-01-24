@@ -4,7 +4,6 @@ import * as AuthController from '../../controllers/auth/auth.controller';
 import { RapidJwtPayload } from '../../controllers/interfaces/auth.interfaces';
 import { runAsyncWrapper } from '../utils/asyncwrapper';
 import { User } from '../../database/models';
-import RapidUserNotFoundError from '../../errors/auth/usernotfound.error';
 import RapidIncorrectPasswordError from '../../errors/auth/incorrectpassword.error';
 
 const authRouter = express.Router();
@@ -16,14 +15,14 @@ authRouter.post(
 
         const user = await User.findOne({ where: { username } });
         if (!user) {
-            throw new RapidUserNotFoundError(
-                'User had not been found in the database'
+            throw new RapidIncorrectPasswordError(
+                'Username or password is incorrect'
             );
         }
 
         if (!(await user.validatePassword(password))) {
             throw new RapidIncorrectPasswordError(
-                'Password provided is incorrect'
+                'Username or password is incorrect'
             );
         }
 
