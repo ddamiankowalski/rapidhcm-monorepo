@@ -3,6 +3,7 @@
 @use './utils/index' as util;
 @use './layout/index' as layout;
 @use './utils/reset/reset' as reset;
+@use './global/index' as global;
 
 @import "./fontawesome/fontawesome.scss";
 @import "./fontawesome/solid.scss";

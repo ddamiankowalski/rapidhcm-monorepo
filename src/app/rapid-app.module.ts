@@ -10,7 +10,7 @@ import { routes } from './routing/routes';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { RapidInterceptor } from './interceptors/rapid.interceptor';
 import { RapidErrorInterceptor } from './interceptors/rapid-error.interceptor';
-import { RapidToastService } from './services/toast.service';
+import { RapidToastModule } from '@kowalskiddamian/rapid-ui';
 
 @NgModule({
   declarations: [RapidAppComponent],
@@ -18,6 +18,7 @@ import { RapidToastService } from './services/toast.service';
     BrowserModule,
     AuthModule,
     HttpClientModule,
+    RapidToastModule,
     RouterModule.forRoot(routes),
     TranslateModule.forRoot({
       defaultLanguage: 'en',
@@ -30,8 +31,7 @@ import { RapidToastService } from './services/toast.service';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: RapidErrorInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: RapidInterceptor, multi: true },
-    RapidToastService
+    { provide: HTTP_INTERCEPTORS, useClass: RapidInterceptor, multi: true }
   ],
   bootstrap: [RapidAppComponent],
 })
