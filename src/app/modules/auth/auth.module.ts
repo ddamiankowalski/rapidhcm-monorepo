@@ -21,7 +21,6 @@ import { ThirdPartyAuthComponent } from "./components/third-party-auth-component
     ],
     exports: [
         AuthComponent
-    ],
-    providers: []
+    ]
 })
 export class AuthModule {}

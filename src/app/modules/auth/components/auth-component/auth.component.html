@@ -9,7 +9,7 @@
                     <rapid-input formControlName="password" [control]="loginForm.controls['password']" class="rapid-margin__top--x-large" [type]="'password'" [label]="'Password'" [placeholder]="'Enter your password'"></rapid-input>
                     <rapid-checkbox formControlName="rememberUser" class="rapid-margin__top--x-large" [label]="'Remember me?'"></rapid-checkbox>
                 </div>
-                <rapid-button (click)="submitLogin()" [disabled]="!loginForm.valid" class="rapid-button__full-width rapid-margin__vertical--large">Login</rapid-button>
+                <rapid-button [isLoading]="loading.status$ | async" (click)="submitLogin()" [disabled]="!loginForm.valid || (loading.status$ | async)" class="rapid-button__full-width rapid-margin__vertical--large">Login</rapid-button>
                 <div class="rapid-margin__top--x-large rapid-flex--column rapid-text__size--x-small rapid-flex-gap--small">
                     <span class="rapid-flex--align-self">Forgot your password? <a href="#">Remind me</a></span>
                     <span class="rapid-flex--align-self">Not yet have an account? <a href="#">Sign Up</a></span>

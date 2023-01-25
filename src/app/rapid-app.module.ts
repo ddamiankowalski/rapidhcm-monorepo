@@ -10,6 +10,7 @@ import { routes } from './routing/routes';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { RapidInterceptor } from './interceptors/rapid.interceptor';
 import { RapidErrorInterceptor } from './interceptors/rapid-error.interceptor';
+import { RapidToastService } from './services/toast.service';
 
 @NgModule({
   declarations: [RapidAppComponent],
@@ -28,8 +29,9 @@ import { RapidErrorInterceptor } from './interceptors/rapid-error.interceptor';
     }),
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: RapidErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: RapidInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: RapidErrorInterceptor, multi: true }
+    RapidToastService
   ],
   bootstrap: [RapidAppComponent],
 })

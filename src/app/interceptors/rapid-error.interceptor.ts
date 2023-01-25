@@ -1,15 +1,13 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from "@angular/common/http";
+import { HttpErrorResponse, HttpHandler, HttpInterceptor, HttpRequest, HttpEvent } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, Observable, ObservableInput, throwError } from "rxjs";
+import { catchError, Observable, throwError } from "rxjs";
 
 @Injectable()
 export class RapidErrorInterceptor implements HttpInterceptor {
-    intercept(httpRequest: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    intercept<T>(httpRequest: HttpRequest<T>, next: HttpHandler): Observable<HttpEvent<T>> {
         return next.handle(httpRequest).pipe(
-            catchError((error: HttpErrorResponse, caught: Observable<HttpEvent<unknown>>): ObservableInput<HttpEvent<unknown>> => {
-                console.log(error.error, 'ehh');
-                return throwError('hmm');
-            })
+            // here we will log and show errors on screen
+            catchError((error: HttpErrorResponse) => throwError(() => error))
         );
     }
 }

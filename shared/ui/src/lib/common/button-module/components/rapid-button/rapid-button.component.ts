@@ -16,8 +16,8 @@ export class RapidButtonComponent implements OnChanges {
 
     @Input() type: RapidButtonType = 'default';
     @Input() loadingType: RapidButtonLoadingType = 'default';
-    @Input() isLoading = false;
-    @Input() disabled = false;
+    @Input() isLoading: boolean | null = false;
+    @Input() disabled: boolean | null = false;
 
     stoppedLoading = false;
 
