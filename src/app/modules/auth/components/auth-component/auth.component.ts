@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms"
 import { RapidLoadingService } from "../../../../services/loading.service";
 import { RapidAccessToken, RapidLoginPayload } from "../../../../interfaces/auth.interfaces";
 import { RapidBackendService } from "../../../../services/backend.service";
+import { RapidToastService } from "shared/ui/src/lib/global/toast-module/services/rapid-toast.service";
 
 @Component({
     selector: 'rapid-auth',
@@ -14,7 +15,8 @@ export class AuthComponent implements OnInit {
     constructor(
         private fb: FormBuilder, 
         private backend: RapidBackendService, 
-        public loading: RapidLoadingService
+        public loading: RapidLoadingService,
+        private toast: RapidToastService
     ) {}
 
     public loginForm!: FormGroup;
@@ -25,6 +27,8 @@ export class AuthComponent implements OnInit {
             password: new FormControl('', [ Validators.required ]),
             rememberUser: new FormControl(false)
         });
+
+        this.toast.addToast('hmm', 'nie wiem');
     }
 
     public submitLogin(): void {
