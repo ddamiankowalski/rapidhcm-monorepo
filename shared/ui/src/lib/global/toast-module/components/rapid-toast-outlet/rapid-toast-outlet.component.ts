@@ -29,12 +29,14 @@ export class RapidToastOutletComponent implements AfterViewInit, OnDestroy {
         this._subscriptions.unsubscribe();
     }
 
-    public appendNewToast(toast: RapidToast): void {
+    private appendNewToast(toast: RapidToast): void {
         const newToast = this.toastOutletContainer.createComponent(RapidToastComponent);
+        this.toast.setToastReference(toast.id, newToast);
         this.setToastMessage<RapidToastComponent>(toast.id, toast.title, toast.subtitle, newToast);
     }
 
     private setToastMessage<T>(id: Date, titleValue: string, subtitleValue: string, toastRef: ComponentRef<T>): void {
+        this.setToastInput<T, Date>('id', id, toastRef);
         this.setToastInput<T, string>('title', titleValue, toastRef);
         this.setToastInput<T, string>('subtitle', subtitleValue, toastRef);
         this.cdRef.markForCheck();

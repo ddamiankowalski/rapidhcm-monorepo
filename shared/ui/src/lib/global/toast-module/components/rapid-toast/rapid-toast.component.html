@@ -1,4 +1,4 @@
-<div (click)="handleToastClick()" class="rapid-toast-outlet__toast rapid-toast-outlet__toast--warn">
+<div (click)="toastClick()" (mouseenter)="clearDestroyTimeout()" (mouseleave)="setDestroyTimeout()" class="rapid-toast-outlet__toast rapid-toast-outlet__toast--warn">
     <div class="rapid-toast-outlet__toast__header">
         {{ title }}
     </div>
