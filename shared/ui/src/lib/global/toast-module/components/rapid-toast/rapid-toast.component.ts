@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, AfterViewInit, OnDestroy, ElementRef } from "@angular/core";
-import { RapidAnimationType } from "../../../interfaces/toast.interface";
+import { RapidAnimationType, RapidToast } from "../../../interfaces/toast.interface";
 import { RapidToastAnimationService } from "../../services/rapid-toast-animation.service";
 import { RapidToastService } from "../../services/rapid-toast.service";
 import { Subscription } from 'rxjs';
@@ -44,7 +44,7 @@ export class RapidToastComponent implements OnInit, OnDestroy, AfterViewInit {
 
     private addListenForAddSubscription(): void {
         this._subscriptions.add(
-            this.toast.listenForToasts().subscribe(() => this.updateClientRect()),
+            this.toast.listenForToasts().subscribe((toast: RapidToast) => this.reorderToast(toast.id)),
         );
     }
 
@@ -75,7 +75,10 @@ export class RapidToastComponent implements OnInit, OnDestroy, AfterViewInit {
 
     private startDestroyAnimation() {
         this.startAnimation(RapidAnimationType.FINISH);
-        setTimeout(() => this.toast.destroyToast(this.id), this.animation.getAnimationDuration() - 50)
+        setTimeout(() => {
+            this.toast.destroyToast(this.id);
+            this.cdRef.detectChanges();
+        }, this.animation.getAnimationDuration() - 50)
     }
 
     private startAnimation(animationType: RapidAnimationType): void {
@@ -87,10 +90,5 @@ export class RapidToastComponent implements OnInit, OnDestroy, AfterViewInit {
             this.cdRef.detectChanges();
             this.animation.reorderToastAnimation(this._nativeElement, this._nativeElement.getBoundingClientRect());
         }
-    }
-
-    private updateClientRect(): void {
-        this.cdRef.detectChanges();
-        this.animation.setCurrentBoundingClientRect(this._nativeElement.getBoundingClientRect());
     }
 }

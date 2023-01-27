@@ -7,7 +7,7 @@ import { RapidToastComponent } from "../components/rapid-toast/rapid-toast.compo
     providedIn: 'root'
 })
 export class RapidToastService {
-    private toastRefMap: Map<Date, ComponentRef<RapidToastComponent>> = new Map<Date, ComponentRef<RapidToastComponent>>();
+    private _toastRefMap: Map<Date, ComponentRef<RapidToastComponent>> = new Map<Date, ComponentRef<RapidToastComponent>>();
 
     private _toastStream$: Subject<RapidToast> = new Subject<RapidToast>();
     private _toastDeleted$: Subject<Date> = new Subject<Date>();
@@ -25,19 +25,21 @@ export class RapidToastService {
     }
 
     destroyToast(id: Date = new Date()): void {
-        const toastRef = this.toastRefMap.get(id);
+        const toastRef = this._toastRefMap.get(id);
         toastRef?.destroy();
-        this.toastRefMap.delete(id);
+        this._toastRefMap.delete(id);
         this.emitDeleted(id);
     }
 
     setToastReference(id: Date, toastRef: ComponentRef<RapidToastComponent>): void {
-        this.toastRefMap.set(id, toastRef);
+        this._toastRefMap.set(id, toastRef);
     }
 
     emitDeleted(toastId: Date): void {
         this._toastDeleted$.next(toastId);
     }
 
-
+    getToastMap(): Map<Date, ComponentRef<RapidToastComponent>> {
+        return this._toastRefMap;
+    }
 }
