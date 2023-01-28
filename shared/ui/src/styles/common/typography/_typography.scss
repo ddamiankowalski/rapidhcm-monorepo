@@ -2,6 +2,8 @@
 @use './size' as size;
 
 .rapid-text {
+    line-height: 1.5rem;
+    
     @include weight.types();
     @include size.types();
 }

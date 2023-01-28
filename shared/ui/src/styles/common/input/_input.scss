@@ -1,7 +1,13 @@
+@use '../../layout//media-queries/breakpoints' as breakpoints;
+
 .rapid-input {
     position: relative;
     width: 100%;
     box-sizing: border-box;
+
+    @include breakpoints.breakpoint(sm) {
+        min-width: 14rem;
+    }
 
     &__message {
         position: absolute;

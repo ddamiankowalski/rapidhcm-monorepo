@@ -24,6 +24,7 @@ export class RapidToastComponent implements OnInit, OnDestroy, AfterViewInit {
     private MS_TIMEOUT_PERIOD = 3000;
     private _destroyTimeout!: NodeJS.Timeout;
     private _nativeElement!: HTMLElement;
+    private _destroyAnimationStarted = false;
 
     @Input() id?: Date;
     @Input() title?: string;
@@ -58,7 +59,9 @@ export class RapidToastComponent implements OnInit, OnDestroy, AfterViewInit {
 
     public toastClick(): void {
         this.clearDestroyTimeout();
-        this.startDestroyAnimation();
+        if(!this._destroyAnimationStarted) {
+            this.startDestroyAnimation();
+        }
     }
 
     protected clearDestroyTimeout(): void {
@@ -74,6 +77,7 @@ export class RapidToastComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     private startDestroyAnimation() {
+        this._destroyAnimationStarted = true;
         this.startAnimation(RapidAnimationType.FINISH);
         setTimeout(() => {
             this.toast.destroyToast(this.id);

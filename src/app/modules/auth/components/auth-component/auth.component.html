@@ -1,9 +1,9 @@
-<div class="rapid-align__absolute--center">
+<div class="rapid-login rapid-align__absolute--center">
     <rapid-card class="rapid-card__login">
         <section class="rapid-padding__vertical--xx-large rapid-padding__horizontal--xx-large">
             <form [formGroup]="loginForm">
                 <span class="rapid-text__size--x-large rapid-text__weight--bold">Welcome back</span>
-                <p class="rapid-text__size--medium rapid-margin__top--medium">Type in your username and password</p>
+                <p class="rapid-text rapid-text__size--medium rapid-margin__top--medium">Type in your username and password</p>
                 <div class="rapid-margin__top--xx-large">
                     <rapid-input formControlName="username" [control]="loginForm.controls['username']" class="rapid-margin__top--xx-large" [label]="'Username'" [placeholder]="'Enter your username'"></rapid-input>
                     <rapid-input formControlName="password" [control]="loginForm.controls['password']" class="rapid-margin__top--x-large" [type]="'password'" [label]="'Password'" [placeholder]="'Enter your password'"></rapid-input>

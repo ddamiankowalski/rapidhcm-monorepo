@@ -7,7 +7,7 @@ export class RapidToastAnimationService {
         private cdRef: ChangeDetectorRef
     ) {}
 
-    private MS_ANIMATION_DURATION = 300;
+    private MS_ANIMATION_DURATION = 150;
     private currentBoundingClientRect!: DOMRect;
 
     private _toastShowTransition: Array<RapidToastAnimation> = [ 

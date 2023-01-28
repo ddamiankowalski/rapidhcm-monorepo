@@ -4,6 +4,7 @@
 @use './layout/index' as layout;
 @use './utils/reset/reset' as reset;
 @use './global/index' as global;
+@use './modules/index' as modules;
 
 @import "./fontawesome/fontawesome.scss";
 @import "./fontawesome/solid.scss";
@@ -13,12 +14,18 @@
     padding: 0;
     font-family: 'IBMPlexSans';
     font-style: normal;
-    box-sizing: border-box
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html { 
+    overflow: hidden;
 }
 
 body {
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    position: fixed;
     box-sizing: border-box
 }
 

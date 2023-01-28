@@ -1,3 +1,5 @@
+@use '../../layout//media-queries/breakpoints' as breakpoints;
+
 .rapid-padding {
     display: block;
 
@@ -5,36 +7,71 @@
         &--x-small {
             padding-top: 0.5rem;
             padding-bottom: 0.5rem;
+
+            @include breakpoints.breakpoint(sm) {
+                padding-top: 0.25rem;
+                padding-bottom: 0.25rem;
+            }
         }
 
         &--small {
             padding-top: 0.75rem;
             padding-bottom: 0.75rem;
+
+            @include breakpoints.breakpoint(sm) {
+                padding-top: 0.375rem;
+                padding-bottom: 0.375rem;
+            }
         }
 
         &--medium {
             padding-top: 1rem;
-            padding-bottom: 1rem;          
+            padding-bottom: 1rem;     
+            
+            @include breakpoints.breakpoint(sm) {
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
+            }
         }
 
         &--x-medium {
             padding-top: 1.5rem;
-            padding-bottom: 1.5rem;          
+            padding-bottom: 1.5rem;      
+            
+            @include breakpoints.breakpoint(sm) {
+                padding-top: 0.725rem;
+                padding-bottom: 0.725rem;
+            }
         }
 
         &--large {
             padding-top: 1.75rem;
             padding-bottom: 1.75rem;
+
+            @include breakpoints.breakpoint(sm) {
+                padding-top: 0.85rem;
+                padding-bottom: 0.85rem;
+            }
         }
 
         &--x-large {
             padding-top: 2.25rem;
             padding-bottom: 2.25rem;
+
+            @include breakpoints.breakpoint(sm) {
+                padding-top: 1.125rem;
+                padding-bottom: 1.125rem;
+            }
         }
 
         &--xx-large {
             padding-top: 3rem;
             padding-bottom: 3rem;
+
+            @include breakpoints.breakpoint(sm) {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
         }
     }
 
