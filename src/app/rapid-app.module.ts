@@ -11,7 +11,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { RapidInterceptor } from './interceptors/rapid.interceptor';
 import { RapidErrorInterceptor } from './interceptors/rapid-error.interceptor';
 import { RapidToastModule } from '@kowalskiddamian/rapid-ui';
-
 @NgModule({
   declarations: [RapidAppComponent],
   imports: [

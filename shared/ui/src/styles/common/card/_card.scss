@@ -17,6 +17,10 @@ rapid-card {
     }
 
     &__login {
+        &--animation {
+            //position: relative;
+        }
+
         & > .rapid-card {
             border-radius: 10px 0 0 10px;
 

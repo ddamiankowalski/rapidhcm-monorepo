@@ -3,22 +3,18 @@ import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms"
 import { RapidLoadingService } from "../../../../services/loading.service";
 import { RapidAccessToken, RapidLoginPayload } from "../../../../interfaces/auth.interfaces";
 import { RapidBackendService } from "../../../../services/backend.service";
-import { ChildrenOutletContexts } from "@angular/router";
-import { fadeOutTransition } from "../../animations/router.animations";
 
 @Component({
-    selector: 'rapid-auth',
-    templateUrl: './auth.component.html',
+    selector: 'rapid-login',
+    templateUrl: './login.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [RapidLoadingService],
-    animations: [fadeOutTransition]
+    providers: [RapidLoadingService]
 })
-export class AuthComponent implements OnInit {
+export class RapidLoginComponent implements OnInit {
     constructor(
         private fb: FormBuilder, 
         private backend: RapidBackendService, 
-        public loading: RapidLoadingService,
-        private contexts: ChildrenOutletContexts
+        public loading: RapidLoadingService
     ) {}
 
     public loginForm!: FormGroup;
@@ -29,10 +25,6 @@ export class AuthComponent implements OnInit {
             password: new FormControl('', [ Validators.required ]),
             rememberUser: new FormControl(false)
         });
-    }
-
-    public getRouteAnimationData(): void {
-        return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
     }
 
     public submitLogin(): void {

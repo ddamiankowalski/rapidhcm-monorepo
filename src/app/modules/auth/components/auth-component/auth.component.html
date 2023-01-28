@@ -1,21 +1,8 @@
 <div class="rapid-login rapid-align__absolute--center">
     <rapid-card class="rapid-card__login">
-        <section class="rapid-padding__vertical--xx-large rapid-padding__horizontal--xx-large">
-            <form [formGroup]="loginForm">
-                <span class="rapid-text__size--x-large rapid-text__weight--bold">Welcome back</span>
-                <p class="rapid-text rapid-text__size--medium rapid-margin__top--medium">Type in your username and password</p>
-                <div class="rapid-margin__top--xx-large">
-                    <rapid-input formControlName="username" [control]="loginForm.controls['username']" class="rapid-margin__top--xx-large" [label]="'Username'" [placeholder]="'Enter your username'"></rapid-input>
-                    <rapid-input formControlName="password" [control]="loginForm.controls['password']" class="rapid-margin__top--x-large" [type]="'password'" [label]="'Password'" [placeholder]="'Enter your password'"></rapid-input>
-                    <rapid-checkbox formControlName="rememberUser" class="rapid-margin__top--x-large" [label]="'Remember me?'"></rapid-checkbox>
-                </div>
-                <rapid-button [isLoading]="loading.status$ | async" (click)="submitLogin()" [disabled]="!loginForm.valid || (loading.status$ | async)" class="rapid-button__full-width rapid-margin__vertical--large">Login</rapid-button>
-                <div class="rapid-margin__top--x-large rapid-flex--column rapid-text__size--x-small rapid-flex-gap--small">
-                    <span class="rapid-flex--align-self">Forgot your password? <a href="#">Remind me</a></span>
-                    <span class="rapid-flex--align-self">Not yet have an account? <a href="#">Sign Up</a></span>
-                </div>
-            </form>
-        </section>
+        <div class="rapid-card__login--animation" [@routeAnimations]="getRouteAnimationData()">
+            <router-outlet></router-outlet>
+        </div>
     </rapid-card>
     <rapid-third-party-auth></rapid-third-party-auth>
 </div>
