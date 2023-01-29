@@ -1,23 +1,33 @@
-<form>
+<form [formGroup]="signupForm">
     <span class="rapid-text rapid-text__size--x-large rapid-text__weight--bold"
         >Create a new account</span
     >
-    <rapid-stepper [steps]="steps"></rapid-stepper>
     <p class="rapid-text rapid-text__size--small rapid-margin__top--x-medium">
-        Enter the email address connected to your account and we will send you
-        an email with reset link
+        Fill out necessary fields such as login and email address
     </p>
-    <div class="rapid-margin__top--x-large">
+    <rapid-stepper class="rapid-margin__top--large" [steps]="steps" [currentStep]="currentStep"></rapid-stepper>
+    <div [formGroup]="primarySignupForm" class="rapid-margin__top--x-large">
         <rapid-input
-            class="rapid-margin__top--large"
+            formControlName="email"
+            [control]="primarySignupForm.controls['email']"
+            class="rapid-margin__top--medium"
             [label]="'Email'"
             [placeholder]="'Enter your email'"
+        ></rapid-input>
+        <rapid-input
+            formControlName="username"
+            [control]="primarySignupForm.controls['username']"
+            class="rapid-margin__top--x-large"
+            [label]="'Username'"
+            [placeholder]="'Enter your username'"
         ></rapid-input>
     </div>
     <div class="rapid-flex rapid-flex-gap--small rapid-margin__top--small">
         <rapid-button
+            (click)="proceedToNextAction()"
+            [disabled]="!primarySignupForm.valid"
             class="rapid-button__full-width rapid-margin__vertical--large"
-            >Send email</rapid-button
+            >{{ currentStep === 1 ? 'Sign up' : 'Next Step' }}</rapid-button
         >
         <rapid-button
             routerLink="/auth/login"

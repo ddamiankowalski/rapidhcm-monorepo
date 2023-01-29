@@ -1,6 +1,10 @@
 <div class="rapid-stepper">
     <div class="rapid-stepper__steps">
-        <div *ngFor="let step of steps" class="rapid-stepper__steps__item"></div>
+        <ul>
+            <li *ngFor="let step of steps; index as i" class="rapid-stepper__steps__item">
+                <div class="rapid-stepper__steps__item__title" [ngClass]="{ 'rapid-stepper__steps__item__title--active': currentStep === i }">{{ step.title | translate }}</div>
+                <span [ngClass]="{ 'active': currentStep === i }">{{ i + 1 }}</span>
+            </li>
+        </ul>
     </div>
-    <span class="rapid-stepper__step-title"></span>
 </div>

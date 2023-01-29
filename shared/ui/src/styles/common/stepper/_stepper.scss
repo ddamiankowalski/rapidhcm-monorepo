@@ -1,5 +1,74 @@
-.rapid-stepper {
-    &__steps {}
+@use '../shadows/shadows' as shadows;
 
-    &__steps-title {}
+.rapid-stepper {
+    &__steps {
+        ul {
+            display: flex;
+            gap: 4rem;
+
+            li:not(:first-of-type)::before {
+                content: '';
+                width: 2rem;
+                height: 1px;
+                background-color: var(--border-grey);
+                position: absolute;
+                left: -3rem;
+            }
+        }
+
+        &__item {
+            position: relative;
+            height: 1.5rem;
+            display: flex;
+            align-items: center;
+            font-size: .8rem;
+
+            &__title {
+                &--active {
+                    color: var(--border-grey-deep);
+                }
+
+                color: var(--disabled-deep);
+                margin-left: 2rem;
+
+                &:hover {
+                    cursor: pointer;
+                    color: var(--border-grey-deep);
+
+                    + span {
+                        background-color: var(--primary-action);
+                    }
+                }
+            }
+
+            span {
+                &.active {
+                    background-color: var(--primary-action);
+                    @include shadows.generic(stepper);
+                }
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                left: 0;
+                font-size: .7rem;
+                width: 1.5rem;
+                height: 1.5rem;
+                border-radius: 50%;
+                background-color: var(--border-grey);
+                font-weight: 500;
+                color: var(--light-background-color);
+                transition: background-color .2s ease-in,
+                            box-shadow .2s ease;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: var(--primary-action);
+
+                    @include shadows.generic(stepper);
+                }
+            }
+        }
+    }
 }

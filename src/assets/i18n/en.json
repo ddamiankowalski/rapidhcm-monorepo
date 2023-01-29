@@ -2,5 +2,9 @@
     "validation": {
         "required": "This field is required",
         "email": "Email address is incorrect"
+    },
+    "register": {
+        "primary-data": "Personal info",
+        "optional-data": "Optional"
     }
 }

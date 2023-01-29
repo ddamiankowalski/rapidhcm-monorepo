@@ -8,4 +8,5 @@ import { RapidStepperItems } from '../../../interfaces/stepper.interface';
 })
 export class RapidStepperComponent {
     @Input() steps: RapidStepperItems | undefined;
+    @Input() currentStep = 0;
 }
