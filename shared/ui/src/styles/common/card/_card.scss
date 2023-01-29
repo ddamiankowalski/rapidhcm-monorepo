@@ -17,14 +17,15 @@ rapid-card {
     }
 
     &__login {
-        &--animation {
-            //position: relative;
-        }
 
         & > .rapid-card {
+            max-height: fit-content;
+            max-width: 27rem;
             border-radius: 10px 0 0 10px;
+            transition: 1s all ease;
 
             @include breakpoints.breakpoint(sm) {
+                max-width: revert;
                 width: 100%;
                 height: 100%;
             }

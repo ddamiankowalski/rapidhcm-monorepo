@@ -12,7 +12,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "rapidHcm",
+            "prefix": "rapid",
             "style": "camelCase"
           }
         ],

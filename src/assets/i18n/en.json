@@ -1,5 +1,6 @@
 {
     "validation": {
-        "required": "This field is required"
+        "required": "This field is required",
+        "email": "Email address is incorrect"
     }
 }

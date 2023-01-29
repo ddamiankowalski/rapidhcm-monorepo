@@ -4,14 +4,13 @@ import { RapidLoadingService } from "../../../../services/loading.service";
 import { RapidAccessToken, RapidLoginPayload } from "../../../../interfaces/auth.interfaces";
 import { RapidBackendService } from "../../../../services/backend.service";
 import { ChildrenOutletContexts } from "@angular/router";
-import { fadeOutTransition } from "../../animations/router.animations";
-
+import { smoothHeight } from "../../animations/router.animations";
 @Component({
     selector: 'rapid-auth',
     templateUrl: './auth.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [RapidLoadingService],
-    animations: [fadeOutTransition]
+    animations: [smoothHeight]
 })
 export class AuthComponent implements OnInit {
     constructor(
@@ -31,7 +30,7 @@ export class AuthComponent implements OnInit {
         });
     }
 
-    public getRouteAnimationData(): void {
+    public getRouteAnimationData(): 'LoginView' | 'RemindView' | 'SignUpView' {
         return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
     }
 

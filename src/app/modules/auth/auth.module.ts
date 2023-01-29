@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RapidButtonsModule, RapidCardsModule, RapidCheckboxModule, RapidIconsModule, RapidInputModule } from "@kowalskiddamian/rapid-ui";
+import { RapidButtonsModule, RapidCardsModule, RapidCheckboxModule, RapidIconsModule, RapidInputModule, RapidStepperModule } from "@kowalskiddamian/rapid-ui";
 import { AuthComponent } from "./components/auth-component/auth.component";
 import { RapidThirdPartyAuthComponent } from "./components/third-party-auth-component/third-party-auth.component";
 import { RapidLoginComponent } from "./components/login-component/login.component";
@@ -10,6 +10,7 @@ import { authRoutes } from "./routes/auth.routes";
 import { RapidRemindPasswordComponent } from "./components/remind-password-component/remind-password.component";
 import { RapidSignUpComponent } from "./components/sign-up-component/sign-up.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { RapidDynamicDirective } from "./directives/routechangeanimation.directive";
 
 @NgModule({
     imports: [
@@ -21,6 +22,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
         RapidCheckboxModule,
         RapidButtonsModule,
         RapidIconsModule,
+        RapidStepperModule,
         RouterModule.forChild(authRoutes)
     ],
     declarations: [
@@ -28,7 +30,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
         RapidThirdPartyAuthComponent,
         RapidLoginComponent,
         RapidRemindPasswordComponent,
-        RapidSignUpComponent
+        RapidSignUpComponent,
+        RapidDynamicDirective,
     ],
     exports: [
         AuthComponent

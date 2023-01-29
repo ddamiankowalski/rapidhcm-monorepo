@@ -1,8 +1,8 @@
 <div class="rapid-login rapid-align__absolute--center">
     <rapid-card class="rapid-card__login">
-        <div class="rapid-card__login--animation" [@routeAnimations]="getRouteAnimationData()">
+        <section class="rapid-padding__vertical--xx-large rapid-padding__horizontal--xx-large" [rapidHeightAnimation]="getRouteAnimationData()">
             <router-outlet></router-outlet>
-        </div>
+        </section>
     </rapid-card>
     <rapid-third-party-auth></rapid-third-party-auth>
 </div>

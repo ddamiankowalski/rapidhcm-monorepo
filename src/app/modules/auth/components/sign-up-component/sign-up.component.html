@@ -1,3 +1,37 @@
-<section class="rapid-padding__vertical--xx-large rapid-padding__horizontal--xx-large">
-    Great, let us create a new account
-</section>
+<form>
+    <span class="rapid-text rapid-text__size--x-large rapid-text__weight--bold"
+        >Create a new account</span
+    >
+    <rapid-stepper [steps]="steps"></rapid-stepper>
+    <p class="rapid-text rapid-text__size--small rapid-margin__top--x-medium">
+        Enter the email address connected to your account and we will send you
+        an email with reset link
+    </p>
+    <div class="rapid-margin__top--x-large">
+        <rapid-input
+            class="rapid-margin__top--large"
+            [label]="'Email'"
+            [placeholder]="'Enter your email'"
+        ></rapid-input>
+    </div>
+    <div class="rapid-flex rapid-flex-gap--small rapid-margin__top--small">
+        <rapid-button
+            class="rapid-button__full-width rapid-margin__vertical--large"
+            >Send email</rapid-button
+        >
+        <rapid-button
+            routerLink="/auth/login"
+            type="outline"
+            class="rapid-button__full-width rapid-margin__vertical--large"
+            >Go back</rapid-button
+        >
+    </div>
+    <div
+        class="rapid-margin__top--medium rapid-flex--column rapid-text__size--x-small rapid-flex-gap--small"
+    >
+        <span class="rapid-flex--align-self"
+            >Already have an account?
+            <a routerLink="/auth/login">Log in</a></span
+        >
+    </div>
+</form>
