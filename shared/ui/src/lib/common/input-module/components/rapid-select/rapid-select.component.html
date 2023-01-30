@@ -1,0 +1,9 @@
+<div class="rapid-select">
+    <label class="rapid-select__label">{{ label }}</label>
+    <select [ngModel]="selectValue" (ngModelChange)="onValueChange($event)">
+        <option class="rapid-select__option" *ngFor="let option of options">
+            dupa + {{ option }}
+        </option>
+    </select>
+    <rapid-icon class="rapid-select__icon" name="chevron-down"></rapid-icon>
+</div>

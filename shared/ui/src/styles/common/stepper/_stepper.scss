@@ -28,6 +28,10 @@
                     color: var(--border-grey-deep);
                 }
 
+                &--completed {
+                    color: var(--border-grey-deep);
+                }
+
                 color: var(--disabled-deep);
                 margin-left: 2rem;
 
@@ -43,6 +47,11 @@
 
             span {
                 &.active {
+                    background-color: var(--primary-action);
+                    @include shadows.generic(stepper);
+                }
+
+                &.completed {
                     background-color: var(--primary-action);
                     @include shadows.generic(stepper);
                 }

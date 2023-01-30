@@ -1,0 +1,46 @@
+.rapid-select {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+
+    &__icon {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: .65rem;
+
+        &:hover {
+            cursor: pointer;
+            pointer-events: none;
+        }
+    }
+
+    select {
+        all: unset;
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+        min-height: 2.65rem;
+        padding: 0 1rem;
+        font-size: .8rem;
+        border: 1px solid var(--disabled-deep);
+        border-radius: .5rem;
+
+        &:hover {
+            cursor: pointer;
+
+        }
+
+        & .rapid-select__option {
+            background-color: red;
+            border-radius: 0;
+        }
+    }
+
+    &__label {
+
+    }
+}

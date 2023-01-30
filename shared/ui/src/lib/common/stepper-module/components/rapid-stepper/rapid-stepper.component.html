@@ -2,8 +2,16 @@
     <div class="rapid-stepper__steps">
         <ul>
             <li *ngFor="let step of steps; index as i" class="rapid-stepper__steps__item">
-                <div class="rapid-stepper__steps__item__title" [ngClass]="{ 'rapid-stepper__steps__item__title--active': currentStep === i }">{{ step.title | translate }}</div>
-                <span [ngClass]="{ 'active': currentStep === i }">{{ i + 1 }}</span>
+                <div 
+                    class="rapid-stepper__steps__item__title" 
+                    [ngClass]="{ 'rapid-stepper__steps__item__title--active': currentStep === i, 'rapid-stepper__steps__item__title--completed': currentStep > i }"
+                >{{ step.title | translate }}</div>
+                <span [ngClass]="{ 'active': currentStep === i, 'completed': currentStep > i }">
+                    <ng-container *ngIf="currentStep <= i">
+                        {{ i + 1 }}    
+                    </ng-container>
+                    <rapid-icon *ngIf="currentStep > i" name="check"></rapid-icon>
+                </span>
             </li>
         </ul>
     </div>

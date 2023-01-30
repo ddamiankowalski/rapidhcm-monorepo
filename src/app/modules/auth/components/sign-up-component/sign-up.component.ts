@@ -24,12 +24,19 @@ export class RapidSignUpComponent implements OnInit {
             primary: new FormGroup({
                 email: new FormControl('', [ Validators.email, Validators.required ]),
                 username: new FormControl('', [ Validators.required ])
+            }),
+            secondary: new FormGroup({
+                language: new FormControl('')
             })
         })
     }
 
     get primarySignupForm(): FormGroup {
         return this.signupForm.controls['primary'] as FormGroup;
+    }
+
+    get secondarySignupForm(): FormGroup {
+        return this.signupForm.controls['secondary'] as FormGroup;
     }
 
     public proceedToNextAction(): void {

@@ -6,22 +6,9 @@
         Fill out necessary fields such as login and email address
     </p>
     <rapid-stepper class="rapid-margin__top--large" [steps]="steps" [currentStep]="currentStep"></rapid-stepper>
-    <div [formGroup]="primarySignupForm" class="rapid-margin__top--x-large">
-        <rapid-input
-            formControlName="email"
-            [control]="primarySignupForm.controls['email']"
-            class="rapid-margin__top--medium"
-            [label]="'Email'"
-            [placeholder]="'Enter your email'"
-        ></rapid-input>
-        <rapid-input
-            formControlName="username"
-            [control]="primarySignupForm.controls['username']"
-            class="rapid-margin__top--x-large"
-            [label]="'Username'"
-            [placeholder]="'Enter your username'"
-        ></rapid-input>
-    </div>
+    <ng-container
+        [ngTemplateOutlet]="currentStep === 0 ? firstStep: secondStep"
+    ></ng-container>
     <div class="rapid-flex rapid-flex-gap--small rapid-margin__top--small">
         <rapid-button
             (click)="proceedToNextAction()"
@@ -45,3 +32,31 @@
         >
     </div>
 </form>
+
+
+<ng-template #firstStep>
+    <div [formGroup]="primarySignupForm" class="rapid-margin__top--x-large">
+        <rapid-input
+            formControlName="email"
+            [control]="primarySignupForm.controls['email']"
+            class="rapid-margin__top--medium"
+            [label]="'Email'"
+            [placeholder]="'Enter your email'"
+        ></rapid-input>
+        <rapid-input
+            formControlName="username"
+            [control]="primarySignupForm.controls['username']"
+            class="rapid-margin__top--x-large"
+            [label]="'Username'"
+            [placeholder]="'Enter your username'"
+        ></rapid-input>
+    </div>
+</ng-template>
+
+<ng-template #secondStep>
+    <div [formGroup]="secondarySignupForm" class="rapid-margin__top--x-large">
+        <rapid-select
+            formControlName="language"
+        ></rapid-select>
+    </div>
+</ng-template>

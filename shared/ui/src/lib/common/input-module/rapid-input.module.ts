@@ -8,16 +8,19 @@ import { RapidInputIconComponent } from './components/rapid-input-icon/rapid-inp
 import { RapidInputMessageComponent } from './components/rapid-input-message/rapid-input-message.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { RapidErrorMessagePipe } from './pipes/error-message.pipe';
+import { RapidSelectComponent } from './components/rapid-select/rapid-select.component';
 
 @NgModule({
     declarations: [
         RapidInputComponent,
         RapidInputIconComponent,
         RapidInputMessageComponent,
-        RapidErrorMessagePipe
+        RapidErrorMessagePipe,
+        RapidSelectComponent
     ],
     exports: [
-        RapidInputComponent
+        RapidInputComponent,
+        RapidSelectComponent
     ],
     imports: [
         CommonModule,

@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
+import { RapidIconsModule } from "../icon-module/rapid-icons.module";
 import { RapidStepperComponent } from "./components/rapid-stepper/rapid-stepper.component";
 
 @NgModule({
@@ -9,7 +10,8 @@ import { RapidStepperComponent } from "./components/rapid-stepper/rapid-stepper.
     ],
     imports: [
         CommonModule,
-        TranslateModule
+        TranslateModule,
+        RapidIconsModule
     ],
     exports: [
         RapidStepperComponent
