@@ -19,22 +19,30 @@ export class RapidSelectComponent implements ControlValueAccessor {
 
     public selectValue?: string;
     public disabled = false;
+    public optionsVisible = false;
+
+    public toggleOptionsVisible(): void {
+        this.optionsVisible = !this.optionsVisible;
+    }
 
     public onValueChange(value: string) {
         this.selectValue = value;
         this.onChange(value);
-        console.log(value);
+        this.toggleOptionsVisible();
     }
 
     writeValue(value: string): void {
         this.selectValue = value;
     }
+    
     registerOnChange(fn: (value: string) => void): void {
         this.onChange = fn;
     }
+
     registerOnTouched(fn: (value: FocusEvent) => void): void {
         this.onTouched = fn;
     }
+
     setDisabledState?(isDisabled: boolean): void {
         this.disabled = isDisabled;
     }

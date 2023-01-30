@@ -9,14 +9,53 @@
         top: 50%;
         transform: translateY(-50%);
         font-size: .65rem;
+        transition: transform .3s ease;
 
         &:hover {
             cursor: pointer;
             pointer-events: none;
         }
+
+        &--active {
+            transform: translateY(-50%) rotate(180deg);
+        }
     }
 
-    select {
+    &__option-container {
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+        margin-top: .5rem;
+        border-radius: .5rem;
+        border: 1px solid var(--border-grey);
+        background-color: var(--primary-white);
+
+        &__item {
+            border-radius: .5rem;
+            padding: 1rem 1rem;
+            display: flex;
+            align-items: center;
+            font-size: .8rem;
+            min-height: 2rem;
+            background-color: var(--primary-white);
+            transition: background-color .3s ease-in-out;
+
+            &:first-of-type {
+                border-radius: .5rem .5rem 0 0;
+            }
+
+            &:last-of-type {
+                border-radius: 0 0 .5rem .5rem;
+            }
+
+            &:hover {
+                cursor: pointer;
+                background-color: var(--light-background-color);
+            }
+        }
+    }
+
+    &__display {
         all: unset;
         display: flex;
         align-items: center;
@@ -28,19 +67,19 @@
         font-size: .8rem;
         border: 1px solid var(--disabled-deep);
         border-radius: .5rem;
+        //background-color: var(--lighter-background-color);
+        color: var(--disabled-deep);
+        transition: border .3s ease,
+                    background-color .3s ease;
 
-        &:hover {
+        &:hover:not(.rapid-select__display--active) {
             cursor: pointer;
-
+            background-color: var(--light-background-color);
         }
 
-        & .rapid-select__option {
-            background-color: red;
-            border-radius: 0;
+        &--active {
+            border-color: var(--primary-action-mat);
+            background-color: var(--primary-white);
         }
-    }
-
-    &__label {
-
     }
 }

@@ -1,9 +1,29 @@
 <div class="rapid-select">
     <label class="rapid-select__label">{{ label }}</label>
-    <select [ngModel]="selectValue" (ngModelChange)="onValueChange($event)">
-        <option class="rapid-select__option" *ngFor="let option of options">
-            dupa + {{ option }}
-        </option>
-    </select>
-    <rapid-icon class="rapid-select__icon" name="chevron-down"></rapid-icon>
+    <div 
+        class="rapid-select__display" 
+        [ngClass]="{ 'rapid-select__display--active': optionsVisible }" 
+        (click)="toggleOptionsVisible()" 
+    >{{ selectValue }}</div>
+    <ng-container
+        *ngIf="optionsVisible"
+        [ngTemplateOutlet]="selectOptions"
+        [ngTemplateOutletContext]="{ $implicit: options }"
+    ></ng-container>
+    <rapid-icon 
+        class="rapid-select__icon" 
+        name="chevron-down"
+        [ngClass]="{ 'rapid-select__icon--active': optionsVisible }" 
+    ></rapid-icon>
 </div>
+
+<ng-template #selectOptions let-options>
+    <div class="rapid-select__option-container">
+        <div *ngFor="let option of options" 
+            class="rapid-select__option-container__item"
+            (click)="onValueChange(option)"
+        >
+            {{ option }}
+        </div>
+    </div>
+</ng-template>
