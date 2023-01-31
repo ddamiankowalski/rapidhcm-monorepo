@@ -1,5 +1,16 @@
+@use '../shadows/shadows' as shadows;
+
 rapid-icon {
     line-height: 10px;
+}
+
+.rapid-icon {
+    &--flag {
+        border-radius: .15rem;
+        margin-right: .55rem;
+        
+        @include shadows.generic(checkbox);
+    }
 }
 
 .rapid-button {

@@ -1,5 +1,6 @@
 import { Routes } from "@angular/router";
 import { AuthComponent } from "../components/auth-component/auth.component";
+import { RapidConfirmSignUpComponent } from "../components/confirm-signup-component/confirm-signup.component";
 import { RapidLoginComponent } from "../components/login-component/login.component";
 import { RapidRemindPasswordComponent } from "../components/remind-password-component/remind-password.component";
 import { RapidSignUpComponent } from "../components/sign-up-component/sign-up.component";
@@ -11,6 +12,7 @@ export const authRoutes: Routes = [
             { path: 'login', component: RapidLoginComponent, data: { animation: 'LoginView' } },
             { path: 'remind', component: RapidRemindPasswordComponent, data: { animation: 'RemindView' } },
             { path: 'signup', component: RapidSignUpComponent, data: { animation: 'SignUpView' } },
+            { path: 'confirmsignup', component: RapidConfirmSignUpComponent, data: { animation: 'ConfirmSignup' } },
             { path: '', component: RapidLoginComponent }
         ] 
     },

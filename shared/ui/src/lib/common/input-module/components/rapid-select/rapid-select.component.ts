@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostListener, TemplateRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { RapidOptions, RapidOption } from '../../../interfaces/select.interface';
 
 @Component({
     selector: 'rapid-select',
@@ -11,27 +12,35 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }]
 })
 export class RapidSelectComponent implements ControlValueAccessor {
-    public options: Array<string> = ['value1', 'value2'];
+    @Input() options?: RapidOptions;
+    @Input() iconTemplate!: TemplateRef<unknown>;
     @Input() label?: string;
+    @Input() placeholder?: string;
 
     public onChange!: ((value: string) => void);
     public onTouched!: ((value: FocusEvent) => void);
 
-    public selectValue?: string;
+    public selectValue!: RapidOption;
     public disabled = false;
     public optionsVisible = false;
 
-    public toggleOptionsVisible(): void {
-        this.optionsVisible = !this.optionsVisible;
+    @HostListener('document:click', ['$event'])
+    public clickOutside() {
+        const clickedOutside = !!(event?.target as HTMLElement).classList.contains('rapid-select__display');
+        this.toggleOptionsVisible(clickedOutside);
     }
 
-    public onValueChange(value: string) {
-        this.selectValue = value;
-        this.onChange(value);
+    public toggleOptionsVisible(optionalValue?: boolean): void {
+        this.optionsVisible = optionalValue ?? !this.optionsVisible;
+    }
+
+    public onValueChange(option: RapidOption) {
+        this.selectValue = option;
+        this.onChange(option.value);
         this.toggleOptionsVisible();
     }
 
-    writeValue(value: string): void {
+    writeValue(value: RapidOption): void {
         this.selectValue = value;
     }
     

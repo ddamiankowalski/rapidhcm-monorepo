@@ -1,0 +1,25 @@
+<form>
+    <span class="rapid-text rapid-text__size--x-large rapid-text__weight--bold"
+        >Check your email</span
+    >
+    <p class="rapid-text rapid-text__size--small rapid-margin__top--x-medium">
+        We sent you a message with confirmation link. The message contains information on how to start using RapidHCM.
+    </p>
+    <div class="rapid-flex rapid-flex-gap--small rapid-margin__top--small">
+        <rapid-button
+        type="outline"
+        routerLink="/auth/login"
+        class="rapid-button__full-width rapid-margin__vertical--large"
+        >Got it, thanks</rapid-button>
+        <rapid-button
+            (click)="sendEmail()"
+            class="rapid-button__full-width rapid-margin__vertical--large"
+            >Send again</rapid-button
+        >
+    </div>
+    <div
+        class="rapid-margin__top--medium rapid-flex--column rapid-text__size--x-small rapid-flex-gap--small"
+    >
+        <span class="rapid-flex--align-self">Want to know more about RapidHCM? <a routerLink="/auth/login">See tutorial</a></span>
+    </div>
+</form>

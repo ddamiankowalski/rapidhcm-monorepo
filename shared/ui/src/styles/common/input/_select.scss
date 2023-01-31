@@ -1,3 +1,5 @@
+@use '../shadows/shadows' as shadows;
+
 .rapid-select {
     position: relative;
     width: 100%;
@@ -29,6 +31,8 @@
         border-radius: .5rem;
         border: 1px solid var(--border-grey);
         background-color: var(--primary-white);
+
+        @include shadows.generic(cardnormal);
 
         &__item {
             border-radius: .5rem;
@@ -67,19 +71,34 @@
         font-size: .8rem;
         border: 1px solid var(--disabled-deep);
         border-radius: .5rem;
-        //background-color: var(--lighter-background-color);
         color: var(--disabled-deep);
         transition: border .3s ease,
-                    background-color .3s ease;
+                    background-color .3s ease,
+                    outline .1s,
+                    color .3s ease;
 
         &:hover:not(.rapid-select__display--active) {
             cursor: pointer;
-            background-color: var(--light-background-color);
+            border: 1px solid var(--border-grey-deep);
+            color: var(--border-grey-deep);
         }
 
         &--active {
             border-color: var(--primary-action-mat);
             background-color: var(--primary-white);
+            outline: 3px solid rgba(55, 66, 255, .25);
         }
+    }
+
+    &__label {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        transform: translateY(-50%);
+        left: calc(1rem - .3rem);
+        font-size: .725rem;
+        font-weight: 500;
+        padding: 0 .3rem;
+        background-color: var(--primary-white);
     }
 }

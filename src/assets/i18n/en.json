@@ -5,6 +5,6 @@
     },
     "register": {
         "primary-data": "Personal info",
-        "optional-data": "Optional"
+        "optional-data": "Language"
     }
 }

@@ -1,6 +1,6 @@
 <form [formGroup]="signupForm">
     <span class="rapid-text rapid-text__size--x-large rapid-text__weight--bold"
-        >Create a new account</span
+        >Create an account</span
     >
     <p class="rapid-text rapid-text__size--small rapid-margin__top--x-medium">
         Fill out necessary fields such as login and email address
@@ -12,7 +12,7 @@
     <div class="rapid-flex rapid-flex-gap--small rapid-margin__top--small">
         <rapid-button
             (click)="proceedToNextAction()"
-            [disabled]="!primarySignupForm.valid"
+            [disabled]="(!primarySignupForm.valid && currentStep === 0) || (!secondarySignupForm.valid && currentStep === 1)"
             class="rapid-button__full-width rapid-margin__vertical--large"
             >{{ currentStep === 1 ? 'Sign up' : 'Next Step' }}</rapid-button
         >
@@ -20,16 +20,13 @@
             routerLink="/auth/login"
             type="outline"
             class="rapid-button__full-width rapid-margin__vertical--large"
-            >Go back</rapid-button
-        >
+            >Go back</rapid-button>
     </div>
     <div
         class="rapid-margin__top--medium rapid-flex--column rapid-text__size--x-small rapid-flex-gap--small"
     >
-        <span class="rapid-flex--align-self"
-            >Already have an account?
-            <a routerLink="/auth/login">Log in</a></span
-        >
+        <span class="rapid-flex--align-self">Already have an account?<a routerLink="/auth/login">
+            Log in</a></span>
     </div>
 </form>
 
@@ -56,7 +53,36 @@
 <ng-template #secondStep>
     <div [formGroup]="secondarySignupForm" class="rapid-margin__top--x-large">
         <rapid-select
+            [iconTemplate]="languageIconTemplate"
+            [options]="languageOptions"
+            placeholder="Choose your language"
+            label="Language"
             formControlName="language"
-        ></rapid-select>
+        >
+        </rapid-select>
+        <rapid-input
+            formControlName="password"
+            class="rapid-margin__top--x-large"
+            [label]="'Password'"
+            [placeholder]="'Enter your password'"
+            type="password"
+        ></rapid-input>
+        <rapid-input
+            formControlName="repeatpassword"
+            class="rapid-margin__top--large"
+            [label]="'Repeat password'"
+            [placeholder]="'Repeat your password'"
+            type="password"
+            [control]="secondarySignupForm.controls['repeatpassword']"
+        ></rapid-input>
+        <rapid-checkbox 
+            class="rapid-margin__top--x-large" 
+            label="Terms and Conditions"
+            formControlName="terms"
+        ></rapid-checkbox>
     </div>
+</ng-template>
+
+<ng-template #languageIconTemplate let-icon>
+    <span [ngClass]="'rapid-icon--flag fi fi-' + icon"></span>
 </ng-template>

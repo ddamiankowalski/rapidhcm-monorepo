@@ -4,7 +4,9 @@
         class="rapid-select__display" 
         [ngClass]="{ 'rapid-select__display--active': optionsVisible }" 
         (click)="toggleOptionsVisible()" 
-    >{{ selectValue }}</div>
+    >
+        <ng-container *ngIf="selectValue.icon" [ngTemplateOutlet]="iconTemplate" [ngTemplateOutletContext]="{ $implicit: selectValue.icon || '' }"></ng-container>
+        {{ selectValue.label || placeholder }}</div>
     <ng-container
         *ngIf="optionsVisible"
         [ngTemplateOutlet]="selectOptions"
@@ -23,7 +25,8 @@
             class="rapid-select__option-container__item"
             (click)="onValueChange(option)"
         >
-            {{ option }}
+            <ng-container [ngTemplateOutlet]="iconTemplate" [ngTemplateOutletContext]="{ $implicit: option.icon }"></ng-container>
+            {{ option.label }}
         </div>
     </div>
 </ng-template>
