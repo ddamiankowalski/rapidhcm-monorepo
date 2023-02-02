@@ -17,6 +17,7 @@ export class RapidAuthGuardService implements CanActivate {
     }
 
     private isNotAuthenticated(): boolean {
+        return true;
         this.router.navigate(['/auth']);
         return false;
     }
