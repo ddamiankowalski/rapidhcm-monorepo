@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms"
 import { RapidLoadingService } from "../../../../services/loading.service";
 import { RapidAccessToken, RapidLoginPayload } from "../../../../interfaces/auth.interfaces";
 import { RapidBackendService } from "../../../../services/backend.service";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'rapid-login',
@@ -14,7 +15,8 @@ export class RapidLoginComponent implements OnInit {
     constructor(
         private fb: FormBuilder, 
         private backend: RapidBackendService, 
-        public loading: RapidLoadingService
+        public loading: RapidLoadingService,
+        private router: Router
     ) {}
 
     public loginForm!: FormGroup;
@@ -32,7 +34,10 @@ export class RapidLoginComponent implements OnInit {
             .subscribe((accessToken: RapidAccessToken) => this.handleLoginResponse(accessToken));
     }
 
-    private handleLoginResponse(accessToken: RapidAccessToken): void {
-        console.log(accessToken);
+    private handleLoginResponse(token: RapidAccessToken): void {
+        const { accessToken } = token;
+        localStorage.setItem('rapidAccessToken', accessToken);
+        this.router.navigate(['/dashboard']);
+        console.log('navigating');
     }
 }

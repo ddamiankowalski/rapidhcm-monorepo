@@ -9,14 +9,12 @@ import { RouterModule } from "@angular/router";
 import { authRoutes } from "./routes/auth.routes";
 import { RapidRemindPasswordComponent } from "./components/remind-password-component/remind-password.component";
 import { RapidSignUpComponent } from "./components/sign-up-component/sign-up.component";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RapidDynamicDirective } from "./directives/routechangeanimation.directive";
 import { RapidConfirmSignUpComponent } from "./components/confirm-signup-component/confirm-signup.component";
 
 @NgModule({
     imports: [
         CommonModule,
-        BrowserAnimationsModule,
         ReactiveFormsModule,
         RapidCardsModule,
         RapidInputModule,

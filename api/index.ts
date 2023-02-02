@@ -8,7 +8,6 @@ import cookieParser from 'cookie-parser';
 import { initDBandModels } from './src/database/dbsequelize';
 import { jwtStrategyFactory, jwtStrategyOpts } from './src/middlewares/passport/passport';
 import globalErrorHandler from './src/middlewares/errors/globalerror';
-import { mainMailer } from './src/mailer/mailer';
 
 const app: Express = express();
 const port = process.env.PORT || 8000;
@@ -33,7 +32,5 @@ app.listen(port, () => {
 });
 
 initDBandModels();
-
-mainMailer().catch(e => console.error(e));
 
 export default app;

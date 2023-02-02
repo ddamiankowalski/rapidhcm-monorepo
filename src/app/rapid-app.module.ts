@@ -5,6 +5,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { RapidAppComponent } from './app.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AuthModule } from './modules/auth/auth.module';
 import { routes } from './routing/routes';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -15,6 +16,7 @@ import { RapidToastModule } from '@kowalskiddamian/rapid-ui';
   declarations: [RapidAppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AuthModule,
     HttpClientModule,
     RapidToastModule,
