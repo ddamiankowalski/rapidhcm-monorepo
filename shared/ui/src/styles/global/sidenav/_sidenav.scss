@@ -1,0 +1,49 @@
+.rapid-sidenav {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "sidenav content";
+    grid-template-columns: 23rem 1fr;
+
+    &__header {
+        width: 100%;
+        min-height: 4rem;
+        padding: 2rem 1.5rem;
+        gap: 2rem;
+
+        &__notification-icon {
+            color: var(--primary-white);
+        }
+
+        &__title {
+            font-size: 1rem;
+            color: var(--primary-white);
+            font-weight: 500;
+            flex: 1;
+        }
+
+        &__hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 1rem;
+            height: 1rem;
+
+            &__line {
+                width: 100%;
+                height: .15rem;
+                background-color: var(--primary-white);
+            }
+        }
+    }
+
+    & nav {
+        grid-area: "sidenav";
+        background-color: var(--border-grey-deep);
+    }
+
+    &__content {
+        grid-area: "content";
+        background-color: var(--primary-white);
+    }
+}
