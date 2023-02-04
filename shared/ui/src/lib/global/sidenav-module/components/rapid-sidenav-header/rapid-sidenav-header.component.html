@@ -1,12 +1,12 @@
-<span class="rapid-sidenav__header__hamburger">
+<span class="rapid-sidenav__header__hamburger" (click)="handleHamburgerClick()">
     <div class="rapid-sidenav__header__hamburger__line"></div>
     <div class="rapid-sidenav__header__hamburger__line"></div>
     <div class="rapid-sidenav__header__hamburger__line"></div>
     <div class="rapid-sidenav__header__hamburger__line"></div>
 </span>
-<div class="rapid-sidenav__header__title">
+<div class="rapid-sidenav__header__title" [ngClass]="{ 'rapid-sidenav__header__title--collapsed': isCollapsed }">
     {{ title }}
 </div>
-<div class="rapid-sidenav__header__notification-icon">
+<div class="rapid-sidenav__header__notification-icon" [ngClass]="{ 'rapid-sidenav__header__notification-icon--collapsed': isCollapsed }">
     <rapid-icon name="bell"></rapid-icon>
 </div>

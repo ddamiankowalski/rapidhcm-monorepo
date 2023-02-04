@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'rapid-sidenav-header',
@@ -6,4 +6,12 @@ import { Component } from '@angular/core';
 })
 export class RapidSidenavHeaderComponent {
     public title = 'Shared Calendars';
+    public isCollapsed = false;
+
+    @Output() hamburger: EventEmitter<boolean> = new EventEmitter();
+
+    public handleHamburgerClick() {
+        this.isCollapsed = !this.isCollapsed;
+        this.hamburger.emit(this.isCollapsed);
+    }
 }
