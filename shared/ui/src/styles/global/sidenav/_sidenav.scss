@@ -47,6 +47,14 @@
                 height: .15rem;
                 background-color: var(--primary-white);
             }
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                width: 4rem;
+                height: 4rem;
+            }
         }
     }
 
