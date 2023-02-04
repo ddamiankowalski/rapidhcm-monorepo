@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Output, EventEmitter, ChangeDetectionStrategy, Input } from '@angular/core';
 
 @Component({
     selector: 'rapid-sidenav-header',
@@ -7,12 +7,11 @@ import { Component, Output, EventEmitter, ChangeDetectionStrategy } from '@angul
 })
 export class RapidSidenavHeaderComponent {
     public title = 'Shared Calendars';
-    public isCollapsed = false;
 
+    @Input() public isNavCollapsed: boolean | undefined;
     @Output() hamburger: EventEmitter<boolean> = new EventEmitter();
 
     public handleHamburgerClick() {
-        this.isCollapsed = !this.isCollapsed;
-        this.hamburger.emit(this.isCollapsed);
+        this.hamburger.emit();
     }
 }

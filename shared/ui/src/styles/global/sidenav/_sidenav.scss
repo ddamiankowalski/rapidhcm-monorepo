@@ -1,4 +1,5 @@
 .rapid-sidenav {
+    position: relative;
     display: grid;
     width: 100%;
     height: 100%;
@@ -50,12 +51,14 @@
     }
 
     & nav {
-        grid-area: "sidenav";
+        position: relative;
+        overflow: hidden;
+        grid-area: sidenav;
         background-color: var(--border-grey-deep);
     }
 
     &__content {
-        grid-area: "content";
+        grid-area: content;
         background-color: var(--primary-white);
     }
 }

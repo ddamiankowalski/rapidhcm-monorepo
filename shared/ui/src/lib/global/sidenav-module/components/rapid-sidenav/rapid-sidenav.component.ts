@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { RapidSidenavMenuItem } from "../../../interfaces/sidenav.interface";
 
 @Component({
     selector: 'rapid-sidenav',
@@ -8,7 +9,12 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
 export class RapidSidenavComponent {
     public isCollapsed = false;
 
-    toggleSideNav(collapsedValue: boolean): void {
-        this.isCollapsed = collapsedValue;
+    toggleSideNav(): void {
+        this.isCollapsed = !this.isCollapsed;
+    }
+
+    changeActiveItem(activeItem: RapidSidenavMenuItem) {
+        this.isCollapsed = false;
+        console.log(activeItem);
     }
 }

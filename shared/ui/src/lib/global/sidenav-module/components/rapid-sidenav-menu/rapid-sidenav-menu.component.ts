@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { RapidSidenavMenuItem } from '../../../interfaces/sidenav.interface';
 
@@ -13,6 +13,8 @@ export class RapidSidenavMenuComponent {
             this.activeItem$.next(true);
         }
     }
+
+    @Output() activeItem: EventEmitter<RapidSidenavMenuItem> = new EventEmitter();
 
     public activeItem$: BehaviorSubject<string | true> = new BehaviorSubject<string | true>(true);
 
@@ -40,6 +42,7 @@ export class RapidSidenavMenuComponent {
     ];
 
     public handleMenuItemClick(item: RapidSidenavMenuItem): void {
+        this.activeItem.next(item);
         this.activeItem$.next(item.label);
     }
 }

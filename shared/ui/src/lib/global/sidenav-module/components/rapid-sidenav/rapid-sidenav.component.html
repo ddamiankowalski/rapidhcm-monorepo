@@ -1,10 +1,12 @@
 <div class="rapid-sidenav" [ngClass]="{ 'rapid-sidenav--collapsed': isCollapsed }">
     <nav>
         <rapid-sidenav-header 
-        (hamburger)="toggleSideNav($event)"
+        [isNavCollapsed]="isCollapsed"
+        (hamburger)="toggleSideNav()"
         class="rapid-sidenav__header rapid-flex rapid-flex--justify rapid-flex--align"
         ></rapid-sidenav-header>
-        <rapid-sidenav-menu [isNavCollapsed]="isCollapsed"></rapid-sidenav-menu>
+        <rapid-sidenav-menu (activeItem)="changeActiveItem($event)" [isNavCollapsed]="isCollapsed"></rapid-sidenav-menu>
+        <rapid-sidenav-auxillary class="rapid-sidenav-auxillary" [isNavCollapsed]="isCollapsed"></rapid-sidenav-auxillary>
     </nav>
     <section class="rapid-sidenav__content">
         <ng-content></ng-content>

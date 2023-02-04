@@ -1,0 +1,18 @@
+@use '../shadows/shadows' as shadow;
+
+.rapid-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.11rem;
+    width: 1.1rem;
+    border-radius: .2rem;
+    background-color: var(--primary-action-mat);
+
+    @include shadow.generic(stepper);
+
+    &__value {
+        color: var(--primary-white);
+        font-size: .625rem;
+    }
+}
