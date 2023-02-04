@@ -5,3 +5,4 @@ export * from './checkbox-module/rapid-checkbox.module';
 export * from './input-module/rapid-input.module';
 export * from './stepper-module/rapid-stepper.module';
 export * from './badge-module/rapid-badge.module';
+export * from './menu-module/rapid-menu.module';
