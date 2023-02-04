@@ -1,8 +1,49 @@
 .rapid-header-searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-basis: 20rem;
     background-color: transparent;
+    width: 100%;
 
     &__container {
+        position: relative;
+        padding: 0 2rem;
+        width: 100%;
+        
+        & input {
+            all: unset;
+            width: calc(100% - 2rem);
+            padding: .75rem .5rem;
+            border-bottom: 1px solid var(--disabled-background);
+            font-size: .88rem;
+            transition: border .3s ease;
 
+            &:focus {
+                border-bottom: 1px solid var(--primary-action-mat);
+            }
+        }
+
+        &__icon {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translate(50%, -50%);
+        }
+
+        &__clear-icon {
+            font-size: .8rem;
+            position: absolute;
+            top: 50%;
+            right: 3.5rem;
+            transform: translate(0, -50%);
+            color: var(--disabled-background);
+            transition: color .3s ease;
+
+            &:hover {
+                cursor: pointer;
+                color: var(--disabled-deep);
+            }
+        }
     }
 }

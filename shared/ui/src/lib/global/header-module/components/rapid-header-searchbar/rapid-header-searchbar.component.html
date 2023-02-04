@@ -1,4 +1,7 @@
 <div class="rapid-header-searchbar__container">
-    <input [formControl]="search" />
-    {{ search.value | json  }}
+    <input [placeholder]="'Search in modules'" [formControl]="search" />
+    <rapid-icon *ngIf="search.value" (click)="clearSearchInput()" class="rapid-header-searchbar__container__clear-icon" name="x"></rapid-icon>
+    <rapid-icon-button class="rapid-header-searchbar__container__icon">
+        <rapid-icon name="magnifying-glass"></rapid-icon>
+    </rapid-icon-button>
 </div>

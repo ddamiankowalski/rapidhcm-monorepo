@@ -5,4 +5,8 @@ import { Component, ChangeDetectionStrategy } from "@angular/core";
     templateUrl: './rapid-header.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RapidHeaderComponent {}
+export class RapidHeaderComponent {
+    handleSearchInput(value: string): void {
+        console.log(value);
+    }
+}
