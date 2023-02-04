@@ -1,8 +1,27 @@
-<menu class="rapid-sidenav-menu">
+<menu *ngIf="activeItem$ | async as activeItem" class="rapid-sidenav-menu">
     <ul class="rapid-sidenav-menu__list">
-        <li *ngFor="let item of menuItems" class="rapid-sidenav-menu__list__item">
-            <rapid-icon [name]="item.icon"></rapid-icon>
-            {{ item.label }}
-        </li>
+        <ng-container *ngFor="let item of menuItems">
+            <li 
+                class="rapid-sidenav-menu__list__item"  
+                (click)="handleMenuItemClick(item)"
+                [ngClass]="{ 'rapid-sidenav-menu__list__item--active': activeItem === item.label }"
+            >
+                <rapid-icon [name]="item.icon"></rapid-icon>
+                {{ item.label }}
+            </li>
+            <ng-container
+                *ngIf="item.subitem"
+                [ngTemplateOutlet]="subitems"
+                [ngTemplateOutletContext]="{ $implicit: item.subitem, parent: item.label, activeItem }"
+            ></ng-container>
+        </ng-container>
     </ul>
 </menu>
+
+<ng-template #subitems let-items let-parent="parent" let-activeItem="activeItem">
+    <div class="rapid-sidenav-menu__sublist" [ngClass]="{ 'rapid-sidenav-menu__sublist--active': activeItem === parent }">
+        <li class="rapid-sidenav-menu__sublist__item" *ngFor="let item of items">
+            {{ item.label }}
+        </li>
+    </div>
+</ng-template>

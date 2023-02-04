@@ -4,7 +4,7 @@
         (hamburger)="toggleSideNav($event)"
         class="rapid-sidenav__header rapid-flex rapid-flex--justify rapid-flex--align"
         ></rapid-sidenav-header>
-        <rapid-sidenav-menu></rapid-sidenav-menu>
+        <rapid-sidenav-menu [isNavCollapsed]="isCollapsed"></rapid-sidenav-menu>
     </nav>
     <section class="rapid-sidenav__content">
         <ng-content></ng-content>

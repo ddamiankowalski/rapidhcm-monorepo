@@ -1,11 +1,21 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { RapidSidenavMenuItem } from '../../../interfaces/sidenav.interface';
 
 @Component({
     selector: 'rapid-sidenav-menu',
-    templateUrl: './rapid-sidenav-menu.component.html'
+    templateUrl: './rapid-sidenav-menu.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RapidSidenavMenuComponent {
+    @Input() set isNavCollapsed(collapsedValue: boolean) {
+        if(collapsedValue) {
+            this.activeItem$.next(true);
+        }
+    }
+
+    public activeItem$: BehaviorSubject<string | true> = new BehaviorSubject<string | true>(true);
+
     public menuItems?: RapidSidenavMenuItem[] = [
         { 
             label: 'News', 
@@ -28,4 +38,8 @@ export class RapidSidenavMenuComponent {
             icon: 'users' 
         },
     ];
+
+    public handleMenuItemClick(item: RapidSidenavMenuItem): void {
+        this.activeItem$.next(item.label);
+    }
 }
