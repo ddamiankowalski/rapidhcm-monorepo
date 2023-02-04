@@ -4,7 +4,27 @@
     height: 4rem;
 
     &__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         flex: 1;
+        padding-left: 2.5rem;
+        height: 100%;
         background-color: var(--border-grey-deep);
+
+        &__quick-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        &__user-menu {
+            display: flex;
+            align-items: center;
+            font-size: .8rem;
+            font-weight: 500;
+            gap: 1rem;
+            color: var(--disabled-background);
+            margin-right: 1.5rem;
+        }
     }
 }

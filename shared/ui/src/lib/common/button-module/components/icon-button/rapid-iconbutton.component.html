@@ -1,7 +1,7 @@
 <ng-container *ngTemplateOutlet="default"></ng-container>
 
 <ng-template #default>
-    <div class="rapid-icon-button">
+    <div class="rapid-icon-button" [ngClass]="[ type === 'default' ? 'rapid-icon-button' : 'rapid-icon-button--' + type ]">
         <button [disabled]="disabled">
             <ng-content></ng-content>
         </button>

@@ -42,4 +42,36 @@
             cursor: auto;
         }
     }
+
+    &--outline {
+        button {
+            background: none;
+            color: var(--primary-action);
+
+            &:hover {
+                color: var(--primary-white);
+            }
+        }
+    }
+
+    &--alternative {
+        button {
+            background: none;
+            color: var(--primary-white);
+            border: 1px solid var(--primary-white);
+
+            &:hover {
+                color: var(--border-grey-deep);
+                background: var(--primary-white);
+            }
+
+            &:focus:not(:disabled) {
+                outline: 3px solid rgba(255, 255, 255, .25);
+            }
+    
+            &:active:not(:disabled) {
+                background-color: var(--card-border);
+            }
+        }
+    }
 }

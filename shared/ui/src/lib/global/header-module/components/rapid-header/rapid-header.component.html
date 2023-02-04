@@ -1,4 +1,14 @@
 <header class="rapid-header">
     <rapid-header-searchbar (searchInput)="handleSearchInput($event)" class="rapid-header-searchbar"></rapid-header-searchbar>
-    <div class="rapid-header__content"></div>
+    <div class="rapid-header__content">
+        <div class="rapid-header__content__quick-actions">
+            <rapid-icon-button *ngFor="let action of headerActions" type="outline" class="rapid-header__content__quick-actions__button">
+                <rapid-icon [name]="action.icon"></rapid-icon>
+            </rapid-icon-button>
+        </div>
+        <div class="rapid-header__content__user-menu">
+            Hi, Damian
+            <rapid-header-usermenu></rapid-header-usermenu>
+        </div>
+    </div>
 </header>
