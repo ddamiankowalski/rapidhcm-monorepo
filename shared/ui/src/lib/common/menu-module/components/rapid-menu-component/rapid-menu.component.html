@@ -1,6 +1,7 @@
-<div class="rapid-menu">
+<div class="rapid-menu" [style.transform]="'translate(calc(-100% + ' + widthValue + 'px), 1rem)'">
+    <span class="rapid-menu__arrow"></span>
     <ul class="rapid-menu__list">
-        <li *ngFor="let item of menuItems" class="rapid-menu__list__item">
+        <li *ngFor="let item of menuItems" class="rapid-menu__list__item" (click)="handleMenuClick(item)">
             {{ item.label }}
         </li>
     </ul>

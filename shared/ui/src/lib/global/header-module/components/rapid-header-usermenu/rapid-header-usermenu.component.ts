@@ -11,4 +11,8 @@ export class RapidHeaderUsermenuComponent {
         { label: 'Settings' },
         { label: 'Log out' }
     ];
+
+    public handleMenuClick(menuItem: RapidMenuItem): void {
+        console.log(menuItem);
+    }
 }

@@ -2,8 +2,7 @@
 
 .rapid-menu {
     position: absolute;
-    border-radius: .5rem;
-    transform: translate(-50px, 20px);
+    border-radius: .5rem; 
     background-color: var(--primary-white);
     padding-bottom: .75rem;
     padding-top: .75rem;
@@ -16,12 +15,36 @@
         color: var(--disabled-deep);
 
         &__item {
+            position: relative;
             padding: .75rem 1.5rem;
+            transition: background-color .3s ease;
 
             &:hover {
                 cursor: pointer;
                 background-color: var(--light-background-color);
+            
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    height: 100%;
+                    width: .125rem;
+                    background-color: var(--primary-action-mat);
+                }
             }
         }
+    }
+
+    &__arrow {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border: .5rem solid var(--primary-white);
+        border-top: .5rem solid transparent;
+        border-left: .5rem solid transparent;
+        border-right: .5rem solid transparent;
+        top: -1rem;
+        right: 0;
     }
 }
