@@ -5,11 +5,13 @@ import { RapidHeaderModule, RapidRecentHeaderModule, RapidSidenavModule } from "
 import { RapidDashboardComponent } from "./components/dashboard-component/dashboard.component";
 import { RapidRecentHeaderComponent } from "./components/recent-header-component/recent-header.component";
 import { routes } from "./routes/dashboard.routes";
+import { RapidNewsComponent } from "./content/news-component/rapid-news.component";
 
 @NgModule({
     declarations: [
         RapidDashboardComponent,
-        RapidRecentHeaderComponent
+        RapidRecentHeaderComponent,
+        RapidNewsComponent
     ],
     imports: [
         CommonModule,
