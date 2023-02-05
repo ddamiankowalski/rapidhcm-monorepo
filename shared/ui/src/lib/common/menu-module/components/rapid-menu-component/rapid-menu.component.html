@@ -2,6 +2,7 @@
     <span class="rapid-menu__arrow"></span>
     <ul class="rapid-menu__list">
         <li *ngFor="let item of menuItems" class="rapid-menu__list__item" (click)="handleMenuClick(item)">
+            <rapid-icon *ngIf="item.icon" [name]="item.icon"></rapid-icon>
             {{ item.label }}
         </li>
     </ul>

@@ -8,8 +8,8 @@ import { RapidMenuItem } from '@kowalskiddamian/rapid-ui';
 })
 export class RapidHeaderUsermenuComponent {
     public menuItems: RapidMenuItem[] = [
-        { label: 'Settings' },
-        { label: 'Log out' }
+        { label: 'Settings', icon: 'gear' },
+        { label: 'Log out', icon: 'door-open' }
     ];
 
     public handleMenuClick(menuItem: RapidMenuItem): void {

@@ -35,7 +35,8 @@
             font-size: .8rem;
             position: absolute;
             top: 50%;
-            right: 3.5rem;
+            right: 3rem;
+            padding: .5rem;
             transform: translate(0, -50%);
             color: var(--disabled-background);
             transition: color .3s ease;
