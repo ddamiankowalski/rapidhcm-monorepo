@@ -4,7 +4,7 @@ import { RapidNewsComponent } from "../content/news-component/rapid-news.compone
 
 export const routes: Routes = [
     {
-        path: 'dashboard',
+        path: '',
         component: RapidDashboardComponent,
         children: [
             {
@@ -14,7 +14,7 @@ export const routes: Routes = [
         ]
     },
     {
-        path: '*',
+        path: '**',
         redirectTo: 'dashboard'
     }
 ];
