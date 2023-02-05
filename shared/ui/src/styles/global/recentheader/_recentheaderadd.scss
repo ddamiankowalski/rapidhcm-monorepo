@@ -1,0 +1,9 @@
+@use '../../common/shadows/shadows' as shadow;
+
+.rapid-header-add {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
