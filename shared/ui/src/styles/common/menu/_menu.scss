@@ -1,0 +1,27 @@
+@use '../shadows/shadows' as shadows;
+
+.rapid-menu {
+    position: absolute;
+    border-radius: .5rem;
+    transform: translate(-50px, 20px);
+    background-color: var(--primary-white);
+    padding-bottom: .75rem;
+    padding-top: .75rem;
+
+    @include shadows.generic(cardhover);
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        color: var(--disabled-deep);
+
+        &__item {
+            padding: .75rem 1.5rem;
+
+            &:hover {
+                cursor: pointer;
+                background-color: var(--light-background-color);
+            }
+        }
+    }
+}
