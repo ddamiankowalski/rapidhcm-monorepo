@@ -1,10 +1,18 @@
-import { Component, HostBinding } from "@angular/core";
+import { Component, HostBinding, Input } from "@angular/core";
 
 @Component({
     selector: 'rapid-tile',
     templateUrl: './rapid-tile.component.html'
 })
 export class RapidTileComponent {
-    @HostBinding('style.grid-column') public columnSpan = 'span 7';
-    @HostBinding('style.grid-row') public rowSpan = 'span 3';
+    @Input() set column(value: number) {
+        this.columnSpan = `span ${value}`;
+    }
+
+    @Input() set row(value: number) {
+        this.rowSpan = `span ${value}`;
+    }
+
+    @HostBinding('style.grid-column') public columnSpan?: string;
+    @HostBinding('style.grid-row') public rowSpan?: string;
 }

@@ -1,5 +1,5 @@
 <section class="rapid-news">
-    <rapid-tile>
+    <rapid-tile [row]="3" [column]="6">
         <rapid-card>
             <rapid-card-header>
                 <rapid-card-header-news title="See Top Managers"></rapid-card-header-news>
@@ -8,5 +8,16 @@
                 <rapid-button class="rapid-button__full-width">See the managers</rapid-button>
             </rapid-card-footer>
         </rapid-card>
+    </rapid-tile>
+    <rapid-tile [row]="3" [column]="1" class="rapid-flex rapid-flex--column rapid-flex--justify rapid-flex--align">
+        <rapid-icon-button type="outline">
+            <rapid-icon name="user-circle"></rapid-icon>
+        </rapid-icon-button>
+        <rapid-icon-button type="outline">
+            <rapid-icon name="layer"></rapid-icon>
+        </rapid-icon-button>
+        <rapid-icon-button type="outline">
+            <rapid-icon name="info"></rapid-icon>
+        </rapid-icon-button>
     </rapid-tile>
 </section>
