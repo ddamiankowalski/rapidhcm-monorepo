@@ -3,11 +3,10 @@
 @use './cardimage';
 @use '../../layout/media-queries/breakpoints' as breakpoints;
 
-rapid-card {
-    min-width: min-content;
-}
-
 .rapid-card {
+    height: 100%;
+    width: 100%;
+
     @include breakpoints.breakpoint(sm) {
         justify-content: center;
 
@@ -162,11 +161,16 @@ rapid-card {
 
             &__title {
                 &--container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: .25rem;
+
                     min-width: 0;
                     max-width: 10rem;
                 }
 
                 font-size: .825rem;
+                min-height: .85rem;
                 font-weight: 600;
                 overflow: hidden;
                 white-space: nowrap;

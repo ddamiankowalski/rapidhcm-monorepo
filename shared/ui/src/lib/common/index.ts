@@ -7,3 +7,4 @@ export * from './stepper-module/rapid-stepper.module';
 export * from './badge-module/rapid-badge.module';
 export * from './menu-module/rapid-menu.module';
 export * from './interfaces/index';
+export * from './tile-module/rapid-tile.module';

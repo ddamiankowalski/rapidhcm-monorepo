@@ -5,4 +5,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     templateUrl: './rapid-card.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RapidCardComponent {}
+export class RapidCardComponent {
+}
