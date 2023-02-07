@@ -1,3 +1,5 @@
+@use '../../layout/media-queries/breakpoints' as breakpoints;
+
 .rapid-sidenav-auxillary {
     display: flex;
     justify-content: center;
@@ -35,6 +37,15 @@
             position: absolute;
             bottom: 1.35rem;
             right: 1.35rem;
+        }
+    }
+}
+
+@include breakpoints.breakpoint(sm) {
+    .rapid-sidenav-auxillary {
+        &__content {
+            position: fixed;
+            bottom: 0;
         }
     }
 }
