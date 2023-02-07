@@ -1,10 +1,7 @@
 <form [formGroup]="signupForm">
     <span class="rapid-text rapid-text__size--x-large rapid-text__weight--bold"
-        >Create an account</span
+        >Sign Up</span
     >
-    <p class="rapid-text rapid-text__size--small rapid-margin__top--x-medium">
-        Fill out necessary fields such as login and email address
-    </p>
     <rapid-stepper class="rapid-margin__top--large" [steps]="steps" [currentStep]="currentStep"></rapid-stepper>
     <ng-container
         [ngTemplateOutlet]="currentStep === 0 ? firstStep: secondStep"
@@ -32,6 +29,9 @@
 
 
 <ng-template #firstStep>
+    <p class="rapid-text rapid-text__size--small rapid-margin__top--x-medium">
+        Fill out necessary fields such as login and email address
+    </p>
     <div [formGroup]="primarySignupForm" class="rapid-margin__top--x-large">
         <rapid-input
             formControlName="email"

@@ -4,7 +4,7 @@
         "email": "Email address is incorrect"
     },
     "register": {
-        "primary-data": "Personal info",
+        "primary-data": "Personal",
         "optional-data": "Language"
     }
 }

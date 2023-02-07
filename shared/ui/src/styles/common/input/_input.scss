@@ -5,10 +5,6 @@
     width: 100%;
     box-sizing: border-box;
 
-    @include breakpoints.breakpoint(sm) {
-        min-width: 14rem;
-    }
-
     &__message {
         position: absolute;
         font-size: .725rem;
@@ -83,7 +79,8 @@
         width: 100%;
         padding: 0 1rem;
         font-size: .8rem;
-        transition: border .1s ease;
+        transition: border .1s ease,
+                    outline .1s ease;
 
         &:hover {
             border: 1px solid var(--border-grey-deep);
@@ -91,6 +88,7 @@
 
         &:focus {
             border: 1px solid var(--primary-action-mat);
+            outline: 3px solid rgba(55, 66, 255, .25);
         }
 
         &:active {
@@ -141,6 +139,7 @@
 
             &:focus {
                 border-color: var(--destructive-deep);
+                outline: 3px solid rgba(229, 64, 78, .25);
             }
         }
     }
