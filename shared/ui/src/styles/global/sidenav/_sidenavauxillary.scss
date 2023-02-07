@@ -43,9 +43,8 @@
 
 @include breakpoints.breakpoint(sm) {
     .rapid-sidenav-auxillary {
-        &__content {
-            position: fixed;
-            bottom: 0;
-        }
+        position: fixed;
+        bottom: 0;
+        z-index: 2;
     }
 }
