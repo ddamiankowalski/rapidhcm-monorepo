@@ -11,7 +11,5 @@ $breakpoints: (
        @media ( max-width: #{ map-get( $breakpoints, $breakpoint ) } ) {
          @content;
        }
-    } @else {
-       @warn "Nie można pobrać żadnej wartości z `#{$breakpoint}`. Nie jest zdefiniowany w mapie `$breakpoints` lub jest nieprawidłową liczbą px, em, lub rem.";
     }
   }
