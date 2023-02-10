@@ -14,7 +14,7 @@ import { RapidSidenavComponent } from "./components/rapid-sidenav/rapid-sidenav.
         RapidSidenavAuxillaryComponent
     ],
     exports: [
-        RapidSidenavComponent
+        RapidSidenavComponent,
     ],
     imports: [
         CommonModule,

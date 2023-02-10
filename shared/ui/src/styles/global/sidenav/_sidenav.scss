@@ -89,7 +89,7 @@
             display: block;
             position: absolute;
             background-color: var(--border-grey-deep);
-            transition: height .5s ease-in-out;
+            transition: height .3s ease-in;
         }
 
         &--collapsed {

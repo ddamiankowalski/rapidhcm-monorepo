@@ -1,3 +1,5 @@
+@use '../../layout/media-queries/breakpoints' as breakpoints;
+
 .rapid-header-searchbar {
     display: flex;
     justify-content: center;
@@ -44,6 +46,29 @@
             &:hover {
                 cursor: pointer;
                 color: var(--disabled-deep);
+            }
+        }
+    }
+}
+
+@include breakpoints.breakpoint(sm) {
+    .rapid-header-searchbar {
+        flex-basis: 0;
+
+        &__container {
+            padding: 1rem 2rem;
+
+            &__icon {
+                transform: translate(0, -50%);
+                right: 1.25rem;
+            }
+
+            &__clear-icon {
+                right: 5rem;
+            }
+
+            input {
+                width: calc(100% - 4rem);
             }
         }
     }
